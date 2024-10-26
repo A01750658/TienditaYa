@@ -30,10 +30,10 @@ import mx.sct.tienditaya.R
 fun EditarProducto(navigationController: NavHostController, modifier: Modifier = Modifier) {
     Box(contentAlignment = Alignment.Center,modifier = Modifier
         .fillMaxSize()
-        //.paint(
-        //    painterResource(id = R.drawable.tienda_2),
-        //    contentScale = ContentScale.FillBounds)
-    ){
+        .paint(
+            painterResource(id = R.drawable.tienda_2),
+            contentScale = ContentScale.FillBounds
+        )) {
         Box {
             Column(
                 modifier = modifier
@@ -63,7 +63,7 @@ fun EditarProducto(navigationController: NavHostController, modifier: Modifier =
                     )
                 ){
                     Text(
-                        text = "Confirmar Cambios",
+                        text = "Acceder",
                         textAlign = TextAlign.Center,
                         modifier = Modifier.fillMaxWidth(),
                         style = MaterialTheme.typography.bodyMedium,
