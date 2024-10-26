@@ -9,7 +9,7 @@ import androidx.camera.view.LifecycleCameraController
 import androidx.core.content.ContextCompat
 
 public fun takePhoto(controller: LifecycleCameraController, context: Context,
-                      onPhotoTaken: (Bitmap) -> Unit){
+                      onPhotoTaken: (Bitmap) -> Unit, idForo: String){
     controller.takePicture(
         ContextCompat.getMainExecutor(context),
         object : ImageCapture.OnImageCapturedCallback() {
@@ -18,12 +18,12 @@ public fun takePhoto(controller: LifecycleCameraController, context: Context,
                 val bitmap = image.toBitmap()
                 if (bitmap != null) {
                     val bwBitmap = toBlackAndWhiteDithering(bitmap, dithering = true)
-                    recognizeTextFromBitmap(bwBitmap)
+                    recognizeTextFromBitmap(bwBitmap, idForo)
                 } else {
                     println("Failed to convert ImageProxy to Bitmap")
                 }
                 image.close() // Don't forget to close the ImageProxy
-                println("aaaaaaaaaa")
+
             }
             override fun onError(exception: ImageCaptureException) {
                 super.onError(exception)

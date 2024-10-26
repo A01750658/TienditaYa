@@ -39,16 +39,6 @@ fun CamaraHelper(context: Context, idForo: String) {
         }
     }
 
-    if (idForo == "1") {
-        println("aaasfhashfsiaf")
-    }
-    if (idForo == "2") {
-        println("yyyyyyyyyyyyyyyy")
-    }
-    if (idForo == "3"){
-        println("lllllllllllllllllllllll")
-    }
-
     Box(modifier = Modifier.fillMaxSize()) {
         Camara(
             controller = controller,
@@ -66,7 +56,7 @@ fun CamaraHelper(context: Context, idForo: String) {
                 horizontalArrangement = Arrangement.Center
             ) {
                 IconButton(onClick = {
-                    takePhoto(controller, context, onPhotoTaken = {})
+                    takePhoto(controller, context, onPhotoTaken = {}, idForo)
                 }
                 ){
                     Icon(
