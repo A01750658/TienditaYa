@@ -6,7 +6,7 @@ import androidx.room.PrimaryKey
 
 
 data class Ventas(
-    val producto: String,
-    val cantidad: Int,
-    val precio: Float
+    var producto: String,
+    var cantidad: String,
+    var precio: String
     )

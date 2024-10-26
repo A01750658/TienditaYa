@@ -12,6 +12,7 @@ fun recognizeTextFromBitmap(bitmap: Bitmap, idForo: String, navController: NavHo
     val recognizer = TextRecognition.getClient(TextRecognizerOptions.DEFAULT_OPTIONS)
     val image = InputImage.fromBitmap(bitmap, 0)
     val YTVM = YTVM()
+    var prods = mutableListOf<Ventas>()
 
     recognizer.process(image)
         .addOnSuccessListener { visionText ->
@@ -28,17 +29,22 @@ fun recognizeTextFromBitmap(bitmap: Bitmap, idForo: String, navController: NavHo
 
             if (idForo == "1") {
                 for (i in products) {
+                    var Venta = Ventas("0","0","0")
                     if (i.size == 3) {
-                        YTVM.appendListaProducto(i)
+                        Venta.producto = i[0]
+                        Venta.cantidad = i[1]
+                        Venta.precio = i[2]
                     }
+                    prods.add(Venta)
                 }
+                YTVM.setListaProducto(prods)
                 navController.navigate(Pantallas.RUTA_VENTAS)
                 //YTVM.clearListaProducto()
             }
             if (idForo == "2") {
                 for (i in products) {
                     if (i.size == 2) {
-                        YTVM.appendListaProducto(i)
+                        //YTVM.appendListaProducto(i)
                     }
                 }
                 //YTVM.clearListaProducto()
@@ -46,7 +52,7 @@ fun recognizeTextFromBitmap(bitmap: Bitmap, idForo: String, navController: NavHo
             if (idForo == "3"){
                 for (i in products) {
                     if (i.size == 2) {
-                        YTVM.appendListaProducto(i)
+                        //YTVM.appendListaProducto(i)
                     }
                 }
                 //YTVM.clearListaProducto()

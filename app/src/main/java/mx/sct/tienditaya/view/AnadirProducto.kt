@@ -98,7 +98,7 @@ fun AnadirProducto(viewModel: YTVM, navigationController: NavHostController, mod
                                 .padding(horizontal = 16.dp)
                         ) {
                             Text(
-                                text = estadoLista[i][0],
+                                text = estadoLista[i].producto,
                                 modifier = Modifier
                                     .fillMaxWidth()
                                     .weight(4f),
@@ -108,7 +108,7 @@ fun AnadirProducto(viewModel: YTVM, navigationController: NavHostController, mod
                             )
                             VerticalDivider(color = Color.White, modifier = Modifier.height(40.dp))
                             Text(
-                                text = estadoLista[i][1],
+                                text = estadoLista[i].precio,
                                 modifier = Modifier
                                     .fillMaxWidth()
                                     .weight(3f),

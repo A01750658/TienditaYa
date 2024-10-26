@@ -99,7 +99,7 @@ fun ChecarFiados(viewModel: YTVM, navController: NavHostController, modifier: Mo
                                 .padding(horizontal = 16.dp)
                         ) {
                             Text(
-                                text = estadoLista[i][0],
+                                text = estadoLista[i].producto,
                                 modifier = Modifier
                                     .fillMaxWidth()
                                     .weight(4f),
@@ -109,7 +109,7 @@ fun ChecarFiados(viewModel: YTVM, navController: NavHostController, modifier: Mo
                             )
                             VerticalDivider(color = Color.White, modifier = Modifier.height(40.dp))
                             Text(
-                                text = "$${estadoLista[i][1]}",
+                                text = "$${estadoLista[i].precio}",
                                 modifier = Modifier
                                     .fillMaxWidth()
                                     .weight(2f),

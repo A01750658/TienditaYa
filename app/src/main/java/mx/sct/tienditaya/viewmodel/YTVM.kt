@@ -32,16 +32,26 @@ class YTVM: ViewModel() {
     private val _estadoInt: MutableStateFlow<Int> = MutableStateFlow(0)
     val estadoInt : StateFlow<Int> = _estadoInt
 
-    private val _estadoListaProducto = MutableStateFlow(mutableListOf<List<String>>())
-    val estadoListaProducto: StateFlow<MutableList<List<String>>> = _estadoListaProducto
+    private val _estadoListaProducto = MutableStateFlow<List<Ventas>>(emptyList())
+    val estadoListaProducto: StateFlow<List<Ventas>> = _estadoListaProducto
 
-    fun appendListaProducto(lista: List<String>){
-        _estadoListaProducto.value.add(lista)
+    fun appendListaProducto(lista: List<Ventas>) {
+        val currentList = _estadoListaProducto.value.toMutableList()
+        currentList.addAll(lista)
+        _estadoListaProducto.value = currentList
     }
+
+
+    fun setListaProducto(lista: MutableList<Ventas>){
+        _estadoListaProducto.value = lista
+        println("${_estadoListaProducto.value}")
+    }
+
+
 
     fun clearListaProducto(){
         println("adasfjsallllllpooooooo${_estadoListaProducto.value}")
-        _estadoListaProducto.value.clear()
+        //_estadoListaProducto.value.clear()
     }
 
     fun setEstadoInt(tipo:Int){

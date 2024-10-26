@@ -361,7 +361,7 @@ fun AppNavHost(viewModel: YTVM, navController: NavHostController, modifier: Modi
                 AnadirProducto(viewModel,navController)
             }
             composable(Pantallas.RUTA_VENTAS) {
-                Ventas(navController)
+                Ventas(viewModel, navController)
             }
             composable(Pantallas.RUTA_INVENTARIO) {
                 Inventario(viewModel)
@@ -370,7 +370,7 @@ fun AppNavHost(viewModel: YTVM, navController: NavHostController, modifier: Modi
                 Fiados(viewModel,navController)
             }
             composable(Pantallas.RUTA_CHECAR_FIADOS) {
-                ChecarFiados(navController)
+                ChecarFiados(viewModel, navController)
             }
             composable(Pantallas.RUTA_EDITAR_PRODUCTO) {
                 EditarProducto(navController)

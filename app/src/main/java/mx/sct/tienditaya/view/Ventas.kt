@@ -45,6 +45,7 @@ import mx.sct.tienditaya.viewmodel.YTVM
 @Composable
 fun Ventas(viewModel: YTVM,navController: NavHostController, modifier: Modifier = Modifier) {
     val estadoLista by viewModel.estadoListaProducto.collectAsState()
+    println(estadoLista)
     Box(
         contentAlignment = Alignment.Center,
         modifier = Modifier
@@ -134,7 +135,7 @@ fun Ventas(viewModel: YTVM,navController: NavHostController, modifier: Modifier 
                 items(estadoLista.size) { index ->
                     Row {
                         Text(
-                            text = estadoLista[index][1],
+                            text = estadoLista[index].producto,
                             style = MaterialTheme.typography.bodyLarge,
                             color = Color.White,
                             fontSize = 20.sp,
@@ -145,7 +146,7 @@ fun Ventas(viewModel: YTVM,navController: NavHostController, modifier: Modifier 
                         )
                         VerticalDivider(color = Color.White, modifier = Modifier.height(40.dp))
                         Text(
-                            text = estadoLista[index][0],
+                            text = estadoLista[index].cantidad,
                             style = MaterialTheme.typography.bodyLarge,
                             color = Color.White,
                             fontSize = 20.sp,
@@ -156,7 +157,7 @@ fun Ventas(viewModel: YTVM,navController: NavHostController, modifier: Modifier 
                         )
                         VerticalDivider(color = Color.White, modifier = Modifier.height(40.dp))
                         Text(
-                            text = "$${estadoLista[index][2]}",
+                            text = "$${estadoLista[index].precio}",
                             style = MaterialTheme.typography.bodyLarge,
                             color = Color.White,
                             fontSize = 20.sp,
