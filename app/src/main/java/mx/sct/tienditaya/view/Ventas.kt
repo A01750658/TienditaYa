@@ -52,7 +52,9 @@ fun Ventas(viewModel: YTVM,navController: NavHostController, modifier: Modifier 
     var estadoLista = mutableListOf<List<String>>()
     if (cais != null) {
         for (i in cais){
-            estadoLista.add(i.split(" "))
+            if (i.split(" ").size == 3){
+                estadoLista.add(i.split(" "))
+            }
         }
     }
     println("hashshdashdash")
