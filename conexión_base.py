@@ -42,6 +42,18 @@ def get_inventario():
     '''Get the data from the inventory'''
     miCursor.execute("SELECT * FROM inventario")
     myresult = miCursor.fetchall()
+    print(myresult)
+    print(type(myresult))
+    for t in range(len(myresult)):
+        myresult[t] = list(myresult[t])
+    for i in myresult:
+        print(i)
+        print(type(i))
+        for j in range(len(i)):
+            if type(i[j]) != str:
+                i[j] = str(i[j])
+    print(myresult)
+    print(type(myresult))
     return {"response":myresult}
 
 @app.post("/inventario/data")
@@ -97,6 +109,18 @@ def get_fiado():
     '''Get the data from the inventory'''
     miCursor.execute("SELECT * FROM fiados")
     myresult = miCursor.fetchall()
+    print(myresult)
+    print(type(myresult))
+    for t in range(len(myresult)):
+        myresult[t] = list(myresult[t])
+    for i in myresult:
+        print(i)
+        print(type(i))
+        for j in range(len(i)):
+            if type(i[j]) != str:
+                i[j] = str(i[j])
+    print(myresult)
+    print(type(myresult))
     return {"response":myresult}
 
 @app.put("/fiado/data")

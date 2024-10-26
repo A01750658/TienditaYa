@@ -36,9 +36,10 @@ import mx.sct.tienditaya.viewmodel.YTVM
 
 @Composable
 fun Inventario(viewModel: YTVM, modifier: Modifier = Modifier){
+    viewModel.getInventario()
     val estadoInventario by viewModel.estadoInventario.collectAsState()
     println("AAAAAAAA")
-    println(estadoInventario.size)
+    println(estadoInventario)
     Box(contentAlignment = Alignment.Center,modifier = Modifier
         .fillMaxSize()
         .paint(

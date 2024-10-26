@@ -16,32 +16,71 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
 import mx.sct.tienditaya.model.AppDatabase
+import mx.sct.tienditaya.model.Fiados
 import mx.sct.tienditaya.model.Inventario
+import mx.sct.tienditaya.model.ModelConnection
+import mx.sct.tienditaya.model.ProductInventory
+import mx.sct.tienditaya.model.Ventas
 
 class YTVM: ViewModel() {
-    private lateinit var db: AppDatabase
-    val _estadoInventario = MutableStateFlow<List<Inventario>>(emptyList())
-    val estadoInventario: StateFlow<List<Inventario>> = _estadoInventario
-
-
-    fun database(database: AppDatabase){
-        db = database
-    }
+    private val model = ModelConnection()
+    val _estadoInventario = MutableStateFlow<ProductInventory>(ProductInventory(listOf()))
+    val estadoInventario: StateFlow<ProductInventory> = _estadoInventario
+    val _estadoFiados = MutableStateFlow<ProductInventory>(ProductInventory(listOf()))
+    val estadoFiados: StateFlow<ProductInventory> = _estadoFiados
 
     fun getInventario(){
         println("getInventario")
         println("BBBBBBB")
         viewModelScope.launch {
-            val inventario = db.inventarioDao().getAll()
+            _estadoInventario.value = model.getInventario()
 
         }
     }
+    fun putInventario(Inventario: Inventario){
+        viewModelScope.launch {
+            model.putInventario(Inventario)
+        }
+    }
 
-    fun initDatabase(context: Context){
-        val db = Room.databaseBuilder(
-            context,
-            AppDatabase::class.java, "databaseTY"
-        ).build()
+    fun postInventario(Inventario: Inventario){
+        viewModelScope.launch {
+            val r = model.postInventario(Inventario)
+            println(r)
+
+        }
+    }
+    fun postVenta(venta: Ventas) {
+        viewModelScope.launch {
+            val r = model.postVenta(venta)
+            println(r)
+        }
+    }
+    fun postCompra(compra: mx.sct.tienditaya.model.Compras) {
+        viewModelScope.launch {
+            val r = model.postCompra(compra)
+            println(r)
+        }
+    }
+
+    fun getFiados() {
+        viewModelScope.launch {
+            _estadoFiados.value = model.getFiados()
+        }
+    }
+
+    fun postFiado(fiado: Fiados) {
+        viewModelScope.launch {
+            val r = model.postFiado(fiado)
+            println(r)
+        }
+    }
+
+    fun putFiado(fiado: Fiados) {
+        viewModelScope.launch {
+            val r = model.editFiado(fiado)
+            println(r)
+        }
 
     }
 

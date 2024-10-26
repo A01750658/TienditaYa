@@ -1,6 +1,5 @@
 package mx.sct.tienditaya.view
 
-import androidx.compose.foundation.gestures.scrollable
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -11,26 +10,23 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Create
 import androidx.compose.material.icons.filled.Info
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.paint
-import androidx.compose.ui.layout.ContentScale
-import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
 import mx.sct.tienditaya.R
 import androidx.compose.material3.FloatingActionButton
 import androidx.compose.material3.Icon
-import androidx.compose.material3.Text
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
+import mx.sct.tienditaya.model.Compras
+import mx.sct.tienditaya.viewmodel.YTVM
 
 
 @Composable
-fun Home(navController: NavHostController, modifier: Modifier = Modifier){
+fun Home(navController: NavHostController, modifier: Modifier = Modifier, viewModel: YTVM){
     val scrollState = rememberScrollState()
     val context = LocalContext.current
     Box(modifier= Modifier
@@ -44,19 +40,29 @@ fun Home(navController: NavHostController, modifier: Modifier = Modifier){
                 .fillMaxSize()) {
                 Row() {
                     BotonPantallas(
-                        onClick = { navController.navigate(Pantallas.RUTA_CAMARA) },
+                        onClick = {
+                            navController.navigate(Pantallas.RUTA_CAMARA) },
                         imagen = R.drawable.ventas,
                         nombre = "Ventas"
                     )
                     BotonPantallas(
-                        onClick = { navController.navigate(Pantallas.RUTA_INVENTARIO) },
+                        onClick = { viewModel.putFiado(
+                            mx.sct.tienditaya.model.Fiados(
+                                nombre = "Juan",
+                                deuda = 120f
+                            )
+                        )
+                            navController.navigate(Pantallas.RUTA_INVENTARIO) },
                         imagen = R.drawable.inventario,
                         nombre = "Inventario"
                     )
                 }
                 Row() {
                     BotonPantallas(
-                        onClick = { navController.navigate(Pantallas.RUTA_FIADOS) },
+                        onClick = { navController.navigate(Pantallas.RUTA_FIADOS)
+                            println("FIADOOOOS")
+                            viewModel.getFiados()
+                                  },
                         imagen = R.drawable.fiados,
                         nombre = "Fiados"
                     )
