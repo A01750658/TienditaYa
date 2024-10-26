@@ -1,7 +1,7 @@
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.jetbrains.kotlin.android)
-    //id("org.jetbrains.kotlin.kapt") version "1.8.22"
+    id("org.jetbrains.kotlin.kapt") version "1.8.22"
     id("com.google.devtools.ksp") version "1.9.21-1.0.15"
 }
 
@@ -86,6 +86,8 @@ dependencies {
     androidTestImplementation(libs.androidx.ui.test.junit4)
     debugImplementation(libs.androidx.ui.tooling)
     debugImplementation(libs.androidx.ui.test.manifest)
+
+    implementation ("com.google.android.gms:play-services-mlkit-text-recognition:19.0.1")
 
     val cameraxVersion = "1.3.0-rc01"
 
