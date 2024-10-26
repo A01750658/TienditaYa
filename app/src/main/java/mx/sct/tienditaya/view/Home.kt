@@ -77,6 +77,7 @@ fun Home(navController: NavHostController, modifier: Modifier = Modifier){
                     tint = Color.White
                 )
             }
+            println("ayduaaaa")
         }
     }
 }
