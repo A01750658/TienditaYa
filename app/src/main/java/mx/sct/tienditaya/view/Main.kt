@@ -161,6 +161,32 @@ fun AppTopBar(navController: NavHostController) {
             }
         )
     }
+    else if (navController.currentBackStackEntryAsState().value?.destination?.route == Pantallas.RUTA_CHECAR_FIADOS) {
+        TopAppBar(
+            title = {
+                Text(
+                    text = "Verificar Fiados",
+                    textAlign = TextAlign.Center,
+                    style = MaterialTheme.typography.titleLarge.copy(fontSize = 40.sp),
+                    modifier = Modifier.fillMaxWidth(),
+                    color = MaterialTheme.colorScheme.onTertiary,
+                    fontWeight = FontWeight.Bold
+                )
+            },
+            colors = TopAppBarDefaults.topAppBarColors(
+                containerColor = MaterialTheme.colorScheme.primary
+            ),
+            navigationIcon = {
+                IconButton(onClick = { navController.navigateUp() }) {
+                    Icon(
+                        imageVector = Icons.Default.ArrowBack,
+                        contentDescription = "Back",
+                        tint = MaterialTheme.colorScheme.onTertiary
+                    )
+                }
+            }
+        )
+    }
 }
 
 
@@ -185,7 +211,11 @@ fun AppNavHost(navController: NavHostController, modifier: Modifier = Modifier) 
             Inventario()
         }
         composable(Pantallas.RUTA_FIADOS) {
-            Fiados()
+            Fiados(navController)
+        }
+        composable(Pantallas.RUTA_CHECAR_FIADOS) {
+            ChecarFiados(navController)
         }
     }
 }
+

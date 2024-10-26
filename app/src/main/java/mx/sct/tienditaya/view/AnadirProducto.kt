@@ -16,6 +16,7 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Create
 import androidx.compose.material3.ElevatedButton
+import androidx.compose.material3.FloatingActionButton
 import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
@@ -44,7 +45,7 @@ fun AnadirProducto(navigationController: NavHostController, modifier: Modifier =
             painterResource(id = R.drawable.background),
             contentScale = ContentScale.FillBounds
         )) {
-        Column{
+        Box{
         Column(
             modifier = modifier
                 .padding(20.dp)
@@ -100,7 +101,7 @@ fun AnadirProducto(navigationController: NavHostController, modifier: Modifier =
             }
             HorizontalDivider(color = Color.White)
             LazyColumn(modifier = Modifier.padding(start = 10.dp)) {
-                items(12) { i ->
+                items(35) { i ->
                         Row(
                             modifier = Modifier
                                 .fillMaxWidth()
@@ -150,11 +151,14 @@ fun AnadirProducto(navigationController: NavHostController, modifier: Modifier =
                         }
                         HorizontalDivider(color = Color.White)
                     }
+                item {
+                    Spacer(modifier = Modifier.height(40.dp))
+                }
                 }
             Spacer(modifier = Modifier.height(16.dp))
         }
-            ElevatedButton( onClick = { navigationController.navigate(Pantallas.RUTA_APP_HOME) }, modifier = Modifier.fillMaxWidth().padding(horizontal = 100.dp)) {
-                Text(text = "Guardar")
+            FloatingActionButton( onClick = { navigationController.navigate(Pantallas.RUTA_APP_HOME) }, modifier = Modifier.align(Alignment.BottomCenter)) {
+                Text(text = "Guardar", modifier = Modifier.padding(10.dp), color = Color.White)
             }
         }
     }
