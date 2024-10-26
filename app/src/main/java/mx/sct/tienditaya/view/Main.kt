@@ -385,7 +385,7 @@ fun AppNavHost(viewModel: YTVM, navController: NavHostController, modifier: Modi
                 ChatBot()
             }
             composable(Pantallas.RUTA_CAMARA+"/{idforo}"){
-                CamaraHelper(context = LocalContext.current, idForo = it.arguments?.getString("idforo")!!)
+                CamaraHelper(context = LocalContext.current, idForo = it.arguments?.getString("idforo")!!, navController)
             }
         }
     }
