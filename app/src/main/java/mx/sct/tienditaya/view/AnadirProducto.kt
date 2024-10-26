@@ -33,10 +33,11 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavHostController
 import mx.sct.tienditaya.R
 
 @Composable
-fun AnadirProducto(modifier: Modifier = Modifier) {
+fun AnadirProducto(navigationController: NavHostController, modifier: Modifier = Modifier) {
     Box(contentAlignment = Alignment.Center,modifier = Modifier
         .fillMaxSize()
         .paint(
@@ -152,7 +153,7 @@ fun AnadirProducto(modifier: Modifier = Modifier) {
                 }
             Spacer(modifier = Modifier.height(16.dp))
         }
-            ElevatedButton( onClick = { /*TODO*/ }, modifier = Modifier.fillMaxWidth().padding(horizontal = 100.dp)) {
+            ElevatedButton( onClick = { navigationController.navigate(Pantallas.RUTA_APP_HOME) }, modifier = Modifier.fillMaxWidth().padding(horizontal = 100.dp)) {
                 Text(text = "Guardar")
             }
         }

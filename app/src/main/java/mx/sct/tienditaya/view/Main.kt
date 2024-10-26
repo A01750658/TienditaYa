@@ -151,7 +151,7 @@ fun AppNavHost(navController: NavHostController, modifier: Modifier = Modifier) 
             Home(navController)
         }
         composable(Pantallas.RUTA_ANADIR_PRODUCTO) {
-            AnadirProducto()
+            AnadirProducto(navController)
         }
         composable(Pantallas.RUTA_VENTAS) {
             Ventas()
