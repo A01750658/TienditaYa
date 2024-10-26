@@ -43,7 +43,17 @@ fun AnadirProducto(viewModel: YTVM, navigationController: NavHostController, mod
     //println(estadoLista)
     val strig = viewModel.getHashPasswordSync(LocalContext.current)
     var cais = strig?.split("\n")
-    var estadoLista = cais.toString().split(" ")
+
+    var estadoLista = mutableListOf<List<String>>()
+    if (cais != null) {
+        for (i in cais){
+            if (i.split(" ").size == 2){
+                estadoLista.add(i.split(" "))
+            }
+        }
+    }
+    println("hashshdashdash")
+    println(estadoLista)
     Box(contentAlignment = Alignment.Center,modifier = Modifier
         .fillMaxSize()
         //.paint(

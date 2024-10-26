@@ -45,12 +45,9 @@ fun recognizeTextFromBitmap(bitmap: Bitmap, idForo: String, navController: NavHo
                 //YTVM.clearListaProducto()
             }
             if (idForo == "2") {
-                for (i in products) {
-                    if (i.size == 2) {
-                        //YTVM.appendListaProducto(i)
-                    }
-                }
-                //YTVM.clearListaProducto()
+                YTVM.setListaProducto(resultText)
+                YTVM.saveHashPassword(context)
+                navController.navigate(Pantallas.RUTA_ANADIR_PRODUCTO)
             }
             if (idForo == "3"){
                 for (i in products) {
