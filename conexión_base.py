@@ -106,7 +106,7 @@ def post_fiado(item: FiadoItem):
 
 @app.get("/fiado/data")
 def get_fiado():
-    '''Get the data from the inventory'''
+    '''Get the data from the fiados'''
     miCursor.execute("SELECT * FROM fiados")
     myresult = miCursor.fetchall()
     print(myresult)

@@ -21,6 +21,8 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.material3.VerticalDivider
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.paint
@@ -32,9 +34,11 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
 import mx.sct.tienditaya.R
+import mx.sct.tienditaya.viewmodel.YTVM
 
 @Composable
-fun AnadirProducto(navigationController: NavHostController, modifier: Modifier = Modifier) {
+fun AnadirProducto(viewModel: YTVM, navigationController: NavHostController, modifier: Modifier = Modifier) {
+    val estadoLista by viewModel.estadoListaProducto.collectAsState()
     Box(contentAlignment = Alignment.Center,modifier = Modifier
         .fillMaxSize()
         //.paint(
@@ -97,14 +101,14 @@ fun AnadirProducto(navigationController: NavHostController, modifier: Modifier =
             }
             HorizontalDivider(color = Color.White)
             LazyColumn(modifier = Modifier.padding(start = 10.dp)) {
-                items(35) { i ->
+                items(estadoLista.size) { i ->
                         Row(
                             modifier = Modifier
                                 .fillMaxWidth()
                                 .padding(horizontal = 16.dp)
                         ) {
                             Text(
-                                text = "Producto $i",
+                                text = estadoLista[i][0],
                                 modifier = Modifier
                                     .fillMaxWidth()
                                     .weight(4f),
@@ -114,7 +118,7 @@ fun AnadirProducto(navigationController: NavHostController, modifier: Modifier =
                             )
                             VerticalDivider(color = Color.White, modifier = Modifier.height(40.dp))
                             Text(
-                                text = "$i",
+                                text = estadoLista[i][1],
                                 modifier = Modifier
                                     .fillMaxWidth()
                                     .weight(3f),
@@ -124,7 +128,7 @@ fun AnadirProducto(navigationController: NavHostController, modifier: Modifier =
                             )
                             VerticalDivider(color = Color.White, modifier = Modifier.height(40.dp))
                             Text(
-                                text = "$i",
+                                text = estadoLista[i][2],
                                 modifier = Modifier
                                     .fillMaxWidth()
                                     .weight(2f),

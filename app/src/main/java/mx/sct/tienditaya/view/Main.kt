@@ -358,7 +358,7 @@ fun AppNavHost(viewModel: YTVM, navController: NavHostController, modifier: Modi
                 Home(viewModel = viewModel, navController = navController,)
             }
             composable(Pantallas.RUTA_ANADIR_PRODUCTO) {
-                AnadirProducto(navController)
+                AnadirProducto(viewModel,navController)
             }
             composable(Pantallas.RUTA_VENTAS) {
                 Ventas(navController)
