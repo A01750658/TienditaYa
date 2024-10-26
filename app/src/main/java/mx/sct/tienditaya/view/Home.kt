@@ -4,6 +4,7 @@ import androidx.compose.foundation.gestures.scrollable
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
@@ -33,8 +34,8 @@ fun Home(navController: NavHostController, modifier: Modifier = Modifier){
     Box(modifier= Modifier.fillMaxSize().verticalScroll(scrollState)//.paint(painterResource(id= R.drawable.tienda_2),
         //contentScale = ContentScale.FillBounds)
     ){
-        Box {
-            Column(modifier = modifier.padding(horizontal = 20.dp)) {
+        Box(modifier = Modifier.fillMaxSize()) {
+            Column(modifier = modifier.padding(horizontal = 20.dp).fillMaxSize()) {
                 Row() {
                     BotonPantallas(
                         onClick = { navController.navigate(Pantallas.RUTA_VENTAS) },
@@ -60,6 +61,7 @@ fun Home(navController: NavHostController, modifier: Modifier = Modifier){
                     )
 
                 }
+                Spacer(modifier = Modifier.height(50.dp))
             }
             FloatingActionButton( onClick = { navController.navigate(Pantallas.RUTA_CHAT_BOT) }, modifier = Modifier.align(
                 Alignment.BottomEnd)) {
