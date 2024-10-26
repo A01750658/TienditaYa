@@ -1,12 +1,14 @@
 package mx.sct.tienditaya.model
 
 import android.graphics.Bitmap
+import androidx.navigation.NavHostController
 import com.google.mlkit.vision.common.InputImage
 import com.google.mlkit.vision.text.TextRecognition
 import com.google.mlkit.vision.text.latin.TextRecognizerOptions
+import mx.sct.tienditaya.view.Pantallas
 import mx.sct.tienditaya.viewmodel.YTVM
 
-fun recognizeTextFromBitmap(bitmap: Bitmap, idForo: String) {
+fun recognizeTextFromBitmap(bitmap: Bitmap, idForo: String, navController: NavHostController) {
     val recognizer = TextRecognition.getClient(TextRecognizerOptions.DEFAULT_OPTIONS)
     val image = InputImage.fromBitmap(bitmap, 0)
     val YTVM = YTVM()
@@ -30,6 +32,7 @@ fun recognizeTextFromBitmap(bitmap: Bitmap, idForo: String) {
                         YTVM.appendListaProducto(i)
                     }
                 }
+                navController.navigate(Pantallas.RUTA_VENTAS)
                 //YTVM.clearListaProducto()
             }
             if (idForo == "2") {

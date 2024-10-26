@@ -25,11 +25,12 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import androidx.core.content.ContextCompat
+import androidx.navigation.NavHostController
 import mx.sct.tienditaya.model.recognizeTextFromBitmap
 import mx.sct.tienditaya.model.takePhoto
 
 @Composable
-fun CamaraHelper(context: Context, idForo: String) {
+fun CamaraHelper(context: Context, idForo: String, navController: NavHostController) {
     val controller = remember {
         LifecycleCameraController(context).apply {
             setEnabledUseCases(
@@ -56,7 +57,7 @@ fun CamaraHelper(context: Context, idForo: String) {
                 horizontalArrangement = Arrangement.Center
             ) {
                 IconButton(onClick = {
-                    takePhoto(controller, context, onPhotoTaken = {}, idForo)
+                    takePhoto(controller, context, onPhotoTaken = {}, idForo, navController)
                 }
                 ){
                     Icon(
