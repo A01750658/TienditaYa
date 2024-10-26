@@ -69,7 +69,7 @@ fun Home(navController: NavHostController, modifier: Modifier = Modifier, viewMo
                     BotonPantallas(
                         onClick = { navController.navigate(Pantallas.RUTA_ANADIR_PRODUCTO) },
                         imagen = R.drawable.camion,
-                        nombre = "Agregar Prodcutos"
+                        nombre = "Agregar Productos"
                     )
 
                 }
