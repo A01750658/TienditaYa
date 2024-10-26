@@ -24,6 +24,8 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.material3.VerticalDivider
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -35,11 +37,14 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.lifecycle.ViewModel
 import androidx.navigation.NavHostController
 import mx.sct.tienditaya.R
+import mx.sct.tienditaya.viewmodel.YTVM
 
 @Composable
-fun Ventas(navController: NavHostController, modifier: Modifier = Modifier) {
+fun Ventas(viewModel: YTVM,navController: NavHostController, modifier: Modifier = Modifier) {
+    val estadoLista by viewModel.estadoListaProducto.collectAsState()
     Box(
         contentAlignment = Alignment.Center,
         modifier = Modifier
@@ -126,10 +131,10 @@ fun Ventas(navController: NavHostController, modifier: Modifier = Modifier) {
                         modifier = Modifier.padding(horizontal = 5.dp)
                     )
                 }
-                items(20) { index ->
+                items(estadoLista.size) { index ->
                     Row {
                         Text(
-                            text = "Producto ${index + 1}",
+                            text = estadoLista[index][1],
                             style = MaterialTheme.typography.bodyLarge,
                             color = Color.White,
                             fontSize = 20.sp,
@@ -140,7 +145,7 @@ fun Ventas(navController: NavHostController, modifier: Modifier = Modifier) {
                         )
                         VerticalDivider(color = Color.White, modifier = Modifier.height(40.dp))
                         Text(
-                            text = "${index + 1}",
+                            text = estadoLista[index][0],
                             style = MaterialTheme.typography.bodyLarge,
                             color = Color.White,
                             fontSize = 20.sp,
@@ -151,7 +156,7 @@ fun Ventas(navController: NavHostController, modifier: Modifier = Modifier) {
                         )
                         VerticalDivider(color = Color.White, modifier = Modifier.height(40.dp))
                         Text(
-                            text = "$${index + 1}",
+                            text = "$${estadoLista[index][2]}",
                             style = MaterialTheme.typography.bodyLarge,
                             color = Color.White,
                             fontSize = 20.sp,
@@ -187,7 +192,8 @@ fun Ventas(navController: NavHostController, modifier: Modifier = Modifier) {
                 }
             }
         }
-        FloatingActionButton( onClick = { navController.navigate(Pantallas.RUTA_APP_HOME) }, modifier = Modifier.align(Alignment.BottomCenter)) {
+        FloatingActionButton( onClick = {viewModel.clearListaProducto()
+            navController.navigate(Pantallas.RUTA_APP_HOME) }, modifier = Modifier.align(Alignment.BottomCenter)) {
             Text(text = "Añadir o Editar", modifier = Modifier.padding(10.dp), color = Color.White)
         }
     }

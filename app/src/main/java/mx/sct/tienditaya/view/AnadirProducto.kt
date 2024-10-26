@@ -79,16 +79,6 @@ fun AnadirProducto(viewModel: YTVM, navigationController: NavHostController, mod
                 )
                 VerticalDivider(color = Color.White, modifier = Modifier.height(30.dp))
                 Text(
-                    text = "Costo",
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .weight(2f),
-                    color = Color.White,
-                    textAlign = TextAlign.Center,
-                    fontSize = 20.sp
-                )
-                VerticalDivider(color = Color.White, modifier = Modifier.height(30.dp))
-                Text(
                     text = "Editar",
                     modifier = Modifier
                         .fillMaxWidth()
@@ -122,16 +112,6 @@ fun AnadirProducto(viewModel: YTVM, navigationController: NavHostController, mod
                                 modifier = Modifier
                                     .fillMaxWidth()
                                     .weight(3f),
-                                color = Color.White,
-                                textAlign = TextAlign.Center,
-                                fontSize = 20.sp
-                            )
-                            VerticalDivider(color = Color.White, modifier = Modifier.height(40.dp))
-                            Text(
-                                text = estadoLista[i][2],
-                                modifier = Modifier
-                                    .fillMaxWidth()
-                                    .weight(2f),
                                 color = Color.White,
                                 textAlign = TextAlign.Center,
                                 fontSize = 20.sp
