@@ -22,6 +22,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.paint
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
@@ -291,6 +292,31 @@ fun AppTopBar(navController: NavHostController) {
                 }
             }
         )
+    }else if (navController.currentBackStackEntryAsState().value?.destination?.route == Pantallas.RUTA_CAMARA) {
+        TopAppBar(
+            title = {
+                Text(
+                    text = "Texto que cambia con un estado ahhhh",
+                    textAlign = TextAlign.Center,
+                    style = MaterialTheme.typography.titleLarge.copy(fontSize = 20.sp),
+                    modifier = Modifier.fillMaxWidth(),
+                    color = MaterialTheme.colorScheme.onTertiary,
+                    fontWeight = FontWeight.Bold
+                )
+            },
+            colors = TopAppBarDefaults.topAppBarColors(
+                containerColor = MaterialTheme.colorScheme.primary
+            ),
+            navigationIcon = {
+                IconButton(onClick = { navController.navigateUp() }) {
+                    Icon(
+                        imageVector = Icons.Default.ArrowBack,
+                        contentDescription = "Back",
+                        tint = MaterialTheme.colorScheme.onTertiary
+                    )
+                }
+            }
+        )
     }
 }
 
@@ -340,6 +366,9 @@ fun AppNavHost(navController: NavHostController, modifier: Modifier = Modifier) 
             }
             composable(Pantallas.RUTA_CHAT_BOT) {
                 ChatBot()
+            }
+            composable(Pantallas.RUTA_CAMARA){
+                CamaraHelper(context = LocalContext.current)
             }
         }
     }

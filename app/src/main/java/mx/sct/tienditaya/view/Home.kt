@@ -44,7 +44,7 @@ fun Home(navController: NavHostController, modifier: Modifier = Modifier){
                 .fillMaxSize()) {
                 Row() {
                     BotonPantallas(
-                        onClick = { navController.navigate(Pantallas.RUTA_VENTAS) },
+                        onClick = { navController.navigate(Pantallas.RUTA_CAMARA) },
                         imagen = R.drawable.ventas,
                         nombre = "Ventas"
                     )
