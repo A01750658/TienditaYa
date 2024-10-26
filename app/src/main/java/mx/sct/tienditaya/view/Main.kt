@@ -221,7 +221,32 @@ fun AppTopBar(navController: NavHostController) {
         TopAppBar(
             title = {
                 Text(
-                    text = "Editar Información del Fiado Nueva",
+                    text = "Editar Información Nueva del Fiado",
+                    textAlign = TextAlign.Center,
+                    style = MaterialTheme.typography.titleLarge.copy(fontSize = 35.sp),
+                    modifier = Modifier.fillMaxWidth(),
+                    color = MaterialTheme.colorScheme.onTertiary,
+                    fontWeight = FontWeight.Bold
+                )
+            },
+            colors = TopAppBarDefaults.topAppBarColors(
+                containerColor = MaterialTheme.colorScheme.primary
+            ),
+            navigationIcon = {
+                IconButton(onClick = { navController.navigateUp() }) {
+                    Icon(
+                        imageVector = Icons.Default.ArrowBack,
+                        contentDescription = "Back",
+                        tint = MaterialTheme.colorScheme.onTertiary
+                    )
+                }
+            }
+        )
+    }else if (navController.currentBackStackEntryAsState().value?.destination?.route == Pantallas.RUTA_EDITAR_PRODUCTO_VENTA) {
+        TopAppBar(
+            title = {
+                Text(
+                    text = "Editar Información del Producto para Venta",
                     textAlign = TextAlign.Center,
                     style = MaterialTheme.typography.titleLarge.copy(fontSize = 35.sp),
                     modifier = Modifier.fillMaxWidth(),
@@ -269,7 +294,7 @@ fun AppNavHost(navController: NavHostController, modifier: Modifier = Modifier) 
                 AnadirProducto(navController)
             }
             composable(Pantallas.RUTA_VENTAS) {
-                Ventas()
+                Ventas(navController)
             }
             composable(Pantallas.RUTA_INVENTARIO) {
                 Inventario()
@@ -285,6 +310,9 @@ fun AppNavHost(navController: NavHostController, modifier: Modifier = Modifier) 
             }
             composable(Pantallas.RUTA_EDITAR_FIADO) {
                 EditarFiado(navController)
+                }
+            composable(Pantallas.RUTA_EDITAR_PRODUCTO_VENTA) {
+                EditarProductoVenta(navController)
             }
         }
     }

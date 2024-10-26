@@ -63,7 +63,7 @@ fun EditarProducto(navigationController: NavHostController, modifier: Modifier =
                     )
                 ){
                     Text(
-                        text = "Guardar Cambios",
+                        text = "Confirmar Cambios",
                         textAlign = TextAlign.Center,
                         modifier = Modifier.fillMaxWidth(),
                         style = MaterialTheme.typography.bodyMedium,

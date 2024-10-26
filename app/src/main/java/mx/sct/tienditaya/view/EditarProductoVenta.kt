@@ -23,11 +23,12 @@ import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
 
 @Composable
-fun EditarFiado(navigationController: NavHostController, modifier: Modifier = Modifier) {
-    Box(contentAlignment = Alignment.Center,modifier = Modifier.fillMaxSize()
-    //.paint(
-    //    painterResource(id = R.drawable.tienda_2),
-    //    contentScale = ContentScale.FillBounds)
+fun EditarProductoVenta(navigationController: NavHostController, modifier: Modifier = Modifier) {
+    Box(contentAlignment = Alignment.Center,modifier = Modifier
+        .fillMaxSize()
+        //.paint(
+        //    painterResource(id = R.drawable.tienda_2),
+        //    contentScale = ContentScale.FillBounds)
     ){
         Box {
             Column(
@@ -38,9 +39,11 @@ fun EditarFiado(navigationController: NavHostController, modifier: Modifier = Mo
                     .background(color = MaterialTheme.colorScheme.tertiary.copy(alpha = 0.9f))
             ) {
                 Spacer(modifier = Modifier.height(16.dp))
-                Etiqueta(texto = "Nombre")
+                Etiqueta(texto = "Producto")
                 InputTexto(text = "", onValueChange = {})
-                Etiqueta(texto = "Deuda")
+                Etiqueta(texto = "Cantidad")
+                InputTexto(text = "", onValueChange = {})
+                Etiqueta(texto = "Costo")
                 InputTexto(text = "", onValueChange = {})
                 Spacer(modifier = Modifier.height(16.dp))
                 ElevatedButton(onClick = {
