@@ -40,35 +40,102 @@ fun Main(modifier: Modifier = Modifier){
     }
 }
 
-/**
- * Función de la top bar y la mestra en las pantallas necesarias
- * @author Alan Vega
- * @author Santiago Chevez
- * @author Andrés Cabrera
- * @param navController Controlador de navegación de la aplicación.
- */
+
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun AppTopBar(navController: NavHostController) {
-    TopAppBar(
-        title = {
-            Text(text = "TienditaYa",
-                textAlign = TextAlign.Left,
-                style = MaterialTheme.typography.headlineSmall,
-                modifier = Modifier.fillMaxWidth(),
-                color = MaterialTheme.colorScheme.onTertiary,
-                fontWeight = FontWeight.Bold)
-        },
-        colors = TopAppBarDefaults.topAppBarColors(
-            containerColor = MaterialTheme.colorScheme.primary),
-        navigationIcon = {
-            IconButton(onClick = { navController.navigateUp() }){
-                Icon(imageVector = Icons.Default.ArrowBack,
-                    contentDescription = "Back",
-                    tint = MaterialTheme.colorScheme.onTertiary)
+    if (navController.currentBackStackEntryAsState().value?.destination?.route == Pantallas.RUTA_APP_HOME) {
+        TopAppBar(
+            title = {
+                Text(
+                    text = "TienditaYa",
+                    textAlign = TextAlign.Center,
+                    style = MaterialTheme.typography.headlineSmall,
+                    modifier = Modifier.fillMaxWidth(),
+                    color = MaterialTheme.colorScheme.onTertiary,
+                    fontWeight = FontWeight.Bold
+                )
+            },
+            colors = TopAppBarDefaults.topAppBarColors(
+                containerColor = MaterialTheme.colorScheme.primary
+            )
+        )
+    } else if (navController.currentBackStackEntryAsState().value?.destination?.route == Pantallas.RUTA_VENTAS) {
+        TopAppBar(
+            title = {
+                Text(
+                    text = "Generar venta",
+                    textAlign = TextAlign.Center,
+                    style = MaterialTheme.typography.headlineSmall,
+                    modifier = Modifier.fillMaxWidth(),
+                    color = MaterialTheme.colorScheme.onTertiary,
+                    fontWeight = FontWeight.Bold
+                )
+            },
+            colors = TopAppBarDefaults.topAppBarColors(
+                containerColor = MaterialTheme.colorScheme.primary
+            ),
+            navigationIcon = {
+                IconButton(onClick = { navController.navigateUp() }) {
+                    Icon(
+                        imageVector = Icons.Default.ArrowBack,
+                        contentDescription = "Back",
+                        tint = MaterialTheme.colorScheme.onTertiary
+                    )
+                }
             }
-        }
-    )
+        )
+    } else if (navController.currentBackStackEntryAsState().value?.destination?.route == Pantallas.RUTA_ANADIR_PRODUCTO) {
+        TopAppBar(
+            title = {
+                Text(
+                    text = "Añadir a Inventario",
+                    textAlign = TextAlign.Center,
+                    style = MaterialTheme.typography.headlineSmall,
+                    modifier = Modifier.fillMaxWidth(),
+                    color = MaterialTheme.colorScheme.onTertiary,
+                    fontWeight = FontWeight.Bold
+                )
+            },
+            colors = TopAppBarDefaults.topAppBarColors(
+                containerColor = MaterialTheme.colorScheme.primary
+            ),
+            navigationIcon = {
+                IconButton(onClick = { navController.navigateUp() }) {
+                    Icon(
+                        imageVector = Icons.Default.ArrowBack,
+                        contentDescription = "Back",
+                        tint = MaterialTheme.colorScheme.onTertiary
+                    )
+                }
+            }
+        )
+    } else if (navController.currentBackStackEntryAsState().value?.destination?.route == Pantallas.RUTA_INVENTARIO) {
+        TopAppBar(
+            title = {
+                Text(
+                    text = "Inventario",
+                    textAlign = TextAlign.Center,
+                    style = MaterialTheme.typography.headlineSmall,
+                    modifier = Modifier.fillMaxWidth(),
+                    color = MaterialTheme.colorScheme.onTertiary,
+                    fontWeight = FontWeight.Bold
+                )
+            },
+            colors = TopAppBarDefaults.topAppBarColors(
+                containerColor = MaterialTheme.colorScheme.primary
+            ),
+            navigationIcon = {
+                IconButton(onClick = { navController.navigateUp() }) {
+                    Icon(
+                        imageVector = Icons.Default.ArrowBack,
+                        contentDescription = "Back",
+                        tint = MaterialTheme.colorScheme.onTertiary
+                    )
+                }
+            }
+        )
+    }
 }
 
 
