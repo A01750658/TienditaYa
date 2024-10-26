@@ -17,22 +17,17 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
-import androidx.compose.ui.draw.paint
-import androidx.compose.ui.layout.ContentScale
-import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
-import mx.sct.tienditaya.R
 
 @Composable
-fun EditarProducto(navigationController: NavHostController, modifier: Modifier = Modifier) {
-    Box(contentAlignment = Alignment.Center,modifier = Modifier
-        .fillMaxSize()
-        //.paint(
-        //    painterResource(id = R.drawable.tienda_2),
-        //    contentScale = ContentScale.FillBounds)
+fun EditarFiado(navigationController: NavHostController, modifier: Modifier = Modifier) {
+    Box(contentAlignment = Alignment.Center,modifier = Modifier.fillMaxSize()
+    //.paint(
+    //    painterResource(id = R.drawable.tienda_2),
+    //    contentScale = ContentScale.FillBounds)
     ){
         Box {
             Column(
@@ -43,11 +38,9 @@ fun EditarProducto(navigationController: NavHostController, modifier: Modifier =
                     .background(color = MaterialTheme.colorScheme.tertiary.copy(alpha = 0.9f))
             ) {
                 Spacer(modifier = Modifier.height(16.dp))
-                Etiqueta(texto = "Producto")
+                Etiqueta(texto = "Nombre")
                 InputTexto(text = "", onValueChange = {})
-                Etiqueta(texto = "Cantidad")
-                InputTexto(text = "", onValueChange = {})
-                Etiqueta(texto = "Costo")
+                Etiqueta(texto = "Deuda")
                 InputTexto(text = "", onValueChange = {})
                 Spacer(modifier = Modifier.height(16.dp))
                 ElevatedButton(onClick = {

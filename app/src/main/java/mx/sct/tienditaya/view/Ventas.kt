@@ -35,10 +35,10 @@ fun Ventas(modifier: Modifier = Modifier) {
         contentAlignment = Alignment.Center,
         modifier = Modifier
             .fillMaxSize()
-            .paint(
+            /*.paint(
                 painterResource(id = R.drawable.tienda_2),
                 contentScale = ContentScale.FillBounds
-            )
+            )*/
     ) {
         Column(modifier = Modifier
             .padding(horizontal = 16.dp)
