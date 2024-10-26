@@ -138,7 +138,7 @@ fun AnadirProducto(navigationController: NavHostController, modifier: Modifier =
                             )
                             VerticalDivider(color = Color.White, modifier = Modifier.height(40.dp))
                             ElevatedButton(
-                                onClick = { /*TODO*/ },
+                                onClick = { navigationController.navigate(Pantallas.RUTA_EDITAR_PRODUCTO) },
                                 modifier = Modifier.height(30.dp)
                                     .width(60.dp)
 
