@@ -36,10 +36,8 @@ import mx.sct.tienditaya.viewmodel.YTVM
 
 @Composable
 fun Inventario(viewModel: YTVM, modifier: Modifier = Modifier){
-    viewModel.getInventario()
     val estadoInventario by viewModel.estadoInventario.collectAsState()
-    println("AAAAAAAA")
-    println(estadoInventario)
+    var text by remember { mutableStateOf("") }
     Box(contentAlignment = Alignment.Center,modifier = Modifier
         .fillMaxSize()
         .paint(
@@ -47,7 +45,7 @@ fun Inventario(viewModel: YTVM, modifier: Modifier = Modifier){
             contentScale = ContentScale.FillBounds
         )) {
         Column {
-            InputSearch(text = "", onValueChange = {}, keyBoardType = KeyboardType.Text)
+            InputSearch(text = text, onValueChange = { text = it }, keyBoardType = KeyboardType.Text)
             Column(
                 modifier = modifier
                     .padding(horizontal = 20.dp)
@@ -86,30 +84,32 @@ fun Inventario(viewModel: YTVM, modifier: Modifier = Modifier){
                         .fillMaxSize()
                         .padding(10.dp)
                 ) {
-                    items(12) { i ->
-                        Spacer(modifier = Modifier.height(16.dp))
-                        Row() {
-                            Text(
-                                text = "Producto $i",
-                                modifier = Modifier
-                                    .fillMaxWidth()
-                                    .weight(3f),
-                                color = Color.White,
-                                textAlign = TextAlign.Left,
-                                fontSize = 20.sp
-                            )
-                            Text(
-                                text = "$i",
-                                modifier = Modifier
-                                    .fillMaxWidth()
-                                    .weight(2f),
-                                color = Color.White,
-                                textAlign = TextAlign.Center,
-                                fontSize = 20.sp
-                            )
+                    items(estadoInventario.response.size) { product ->
+                        if(text.isEmpty() || estadoInventario.response[product][1].contains(text, ignoreCase = true)) {
+                            Spacer(modifier = Modifier.height(16.dp))
+                            Row() {
+                                Text(
+                                    text = estadoInventario.response[product][1],
+                                    modifier = Modifier
+                                        .fillMaxWidth()
+                                        .weight(3f),
+                                    color = Color.White,
+                                    textAlign = TextAlign.Left,
+                                    fontSize = 20.sp
+                                )
+                                Text(
+                                    text = estadoInventario.response[product][2],
+                                    modifier = Modifier
+                                        .fillMaxWidth()
+                                        .weight(2f),
+                                    color = Color.White,
+                                    textAlign = TextAlign.Center,
+                                    fontSize = 20.sp
+                                )
+                            }
+                            Spacer(modifier = Modifier.height(16.dp))
+                            HorizontalDivider(color = Color.White)
                         }
-                        Spacer(modifier = Modifier.height(16.dp))
-                        HorizontalDivider(color = Color.White)
                     }
                 }
             }
