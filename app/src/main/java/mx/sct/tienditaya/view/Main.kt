@@ -15,6 +15,12 @@ import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
 import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.paint
@@ -48,6 +54,11 @@ fun Main( viewModel: YTVM, modifier: Modifier = Modifier,){
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun AppTopBar(navController: NavHostController) {
+    val YTVM = YTVM()
+    var tituloCam by remember { mutableStateOf("") }
+    var int = YTVM.estadoInt.collectAsState()
+    //val estadoCategorias = viewModel.estadoCategorias.collectAsState()
+
     if (navController.currentBackStackEntryAsState().value?.destination?.route == Pantallas.RUTA_APP_HOME) {
         TopAppBar(
             title = {
@@ -291,10 +302,18 @@ fun AppTopBar(navController: NavHostController) {
             }
         )
     }else if (navController.currentBackStackEntryAsState().value?.destination?.route == Pantallas.RUTA_CAMARA) {
+        println("CAMARAAAAAAAA${int.value}")
+        if (int.value == 1){
+            tituloCam = "Registra tu venta"
+        }else if (int.value == 2){
+            tituloCam = "Registra tu fiado"
+        }else if (int.value == 3){
+            tituloCam = "Registra tu compra"
+        }
         TopAppBar(
             title = {
                 Text(
-                    text = "Texto que cambia con un estado ahhhh",
+                    text = tituloCam,
                     textAlign = TextAlign.Center,
                     style = MaterialTheme.typography.titleLarge.copy(fontSize = 20.sp),
                     modifier = Modifier.fillMaxWidth(),

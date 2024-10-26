@@ -29,6 +29,7 @@ import mx.sct.tienditaya.viewmodel.YTVM
 fun Home(navController: NavHostController, modifier: Modifier = Modifier, viewModel: YTVM){
     val scrollState = rememberScrollState()
     val context = LocalContext.current
+    val YTVM = YTVM()
     Box(modifier= Modifier
         .fillMaxSize()
         .verticalScroll(scrollState)//.paint(painterResource(id= R.drawable.tienda_2),
@@ -41,17 +42,18 @@ fun Home(navController: NavHostController, modifier: Modifier = Modifier, viewMo
                 Row() {
                     BotonPantallas(
                         onClick = {
+                            YTVM.setEstadoInt(1)
                             navController.navigate(Pantallas.RUTA_CAMARA) },
                         imagen = R.drawable.ventas,
                         nombre = "Ventas"
                     )
                     BotonPantallas(
-                        onClick = { viewModel.putFiado(
-                            mx.sct.tienditaya.model.Fiados(
-                                nombre = "Juan",
-                                deuda = 120f
-                            )
-                        )
+                        onClick = { //viewModel.putFiado(
+                            //mx.sct.tienditaya.model.Fiados(
+                            //    nombre = "Juan",
+                             //   deuda = 120f
+                            //)
+                       //)
                             navController.navigate(Pantallas.RUTA_INVENTARIO) },
                         imagen = R.drawable.inventario,
                         nombre = "Inventario"
@@ -59,7 +61,9 @@ fun Home(navController: NavHostController, modifier: Modifier = Modifier, viewMo
                 }
                 Row() {
                     BotonPantallas(
-                        onClick = { navController.navigate(Pantallas.RUTA_FIADOS)
+                        onClick = {
+                            YTVM.setEstadoInt(2)
+                            navController.navigate(Pantallas.RUTA_FIADOS)
                             println("FIADOOOOS")
                             viewModel.getFiados()
                                   },
@@ -67,7 +71,9 @@ fun Home(navController: NavHostController, modifier: Modifier = Modifier, viewMo
                         nombre = "Fiados"
                     )
                     BotonPantallas(
-                        onClick = { navController.navigate(Pantallas.RUTA_ANADIR_PRODUCTO) },
+                        onClick = {
+                            YTVM.setEstadoInt(3)
+                            navController.navigate(Pantallas.RUTA_CAMARA) },
                         imagen = R.drawable.camion,
                         nombre = "Agregar Productos"
                     )

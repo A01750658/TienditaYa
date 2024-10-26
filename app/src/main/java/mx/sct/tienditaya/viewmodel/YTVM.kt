@@ -29,6 +29,18 @@ class YTVM: ViewModel() {
     val _estadoFiados = MutableStateFlow<ProductInventory>(ProductInventory(listOf()))
     val estadoFiados: StateFlow<ProductInventory> = _estadoFiados
 
+    private val _estadoInt: MutableStateFlow<Int> = MutableStateFlow(0)
+    val estadoInt : StateFlow<Int> = _estadoInt
+
+    fun setEstadoInt(tipo:Int){
+        _estadoInt.value = tipo
+    }
+
+    private val _estadoScanner : MutableStateFlow<MutableSet<String>> = MutableStateFlow(mutableSetOf<String>())
+    val estadoScanner : StateFlow<MutableSet<String>> = _estadoScanner
+
+
+
     fun getInventario(){
         println("getInventario")
         println("BBBBBBB")
