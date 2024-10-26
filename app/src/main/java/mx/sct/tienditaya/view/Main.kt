@@ -301,7 +301,7 @@ fun AppTopBar(navController: NavHostController) {
                 }
             }
         )
-    }else if (navController.currentBackStackEntryAsState().value?.destination?.route == Pantallas.RUTA_CAMARA) {
+    }else {
         println("CAMARAAAAAAAA${int.value}")
         if (int.value == 1){
             tituloCam = "Registra tu venta"
@@ -384,8 +384,8 @@ fun AppNavHost(viewModel: YTVM, navController: NavHostController, modifier: Modi
             composable(Pantallas.RUTA_CHAT_BOT) {
                 ChatBot()
             }
-            composable(Pantallas.RUTA_CAMARA){
-                CamaraHelper(context = LocalContext.current)
+            composable(Pantallas.RUTA_CAMARA+"/{idforo}"){
+                CamaraHelper(context = LocalContext.current, idForo = it.arguments?.getString("idforo")!!)
             }
         }
     }

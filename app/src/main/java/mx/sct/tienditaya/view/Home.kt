@@ -43,7 +43,7 @@ fun Home(navController: NavHostController, modifier: Modifier = Modifier, viewMo
                     BotonPantallas(
                         onClick = {
                             YTVM.setEstadoInt(1)
-                            navController.navigate(Pantallas.RUTA_CAMARA) },
+                            navController.navigate(Pantallas.RUTA_CAMARA+ "/${1}") },
                         imagen = R.drawable.ventas,
                         nombre = "Ventas"
                     )
@@ -68,7 +68,7 @@ fun Home(navController: NavHostController, modifier: Modifier = Modifier, viewMo
                     BotonPantallas(
                         onClick = {
                             YTVM.setEstadoInt(3)
-                            navController.navigate(Pantallas.RUTA_CAMARA) },
+                            navController.navigate(Pantallas.RUTA_CAMARA+ "/${3}") },
                         imagen = R.drawable.camion,
                         nombre = "Agregar Productos"
                     )

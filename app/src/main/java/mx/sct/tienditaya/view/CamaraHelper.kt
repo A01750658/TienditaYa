@@ -29,7 +29,7 @@ import mx.sct.tienditaya.model.recognizeTextFromBitmap
 import mx.sct.tienditaya.model.takePhoto
 
 @Composable
-fun CamaraHelper(context: Context) {
+fun CamaraHelper(context: Context, idForo: String) {
     val controller = remember {
         LifecycleCameraController(context).apply {
             setEnabledUseCases(
@@ -37,6 +37,16 @@ fun CamaraHelper(context: Context) {
                         CameraController.VIDEO_CAPTURE
             )
         }
+    }
+
+    if (idForo == "1") {
+        println("aaasfhashfsiaf")
+    }
+    if (idForo == "2") {
+        println("yyyyyyyyyyyyyyyy")
+    }
+    if (idForo == "3"){
+        println("lllllllllllllllllllllll")
     }
 
     Box(modifier = Modifier.fillMaxSize()) {
