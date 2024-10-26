@@ -3,7 +3,6 @@ plugins {
     alias(libs.plugins.jetbrains.kotlin.android)
     id("org.jetbrains.kotlin.kapt") version "1.8.22"
     id("com.google.devtools.ksp") version "1.9.21-1.0.15"
-
 }
 
 android {
@@ -53,14 +52,14 @@ android {
     ksp {
         arg("room.schemaLocation", "$projectDir/schemas")
     }
-
 }
 
 dependencies {
 
     implementation(libs.androidx.room.runtime)
-    implementation(libs.androidx.camera.view)
     annotationProcessor(libs.androidx.room.compiler)
+    implementation("androidx.room:room-ktx:2.6.0")
+    ksp("androidx.room:room-compiler:2.6.0")
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)
     implementation(libs.androidx.activity.compose)
