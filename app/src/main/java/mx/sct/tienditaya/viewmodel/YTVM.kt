@@ -5,10 +5,13 @@ import android.graphics.Bitmap
 import android.net.Uri
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import androidx.room.Room
+import androidx.room.Room.databaseBuilder
 import com.google.firebase.Firebase
 import com.google.firebase.vertexai.type.content
 import com.google.firebase.vertexai.vertexAI
 import kotlinx.coroutines.launch
+import mx.sct.tienditaya.model.AppDatabase
 
 class YTVM: ViewModel() {
     val generativeModel = Firebase.vertexAI.generativeModel("gemini-1.5-flash")
@@ -19,6 +22,14 @@ class YTVM: ViewModel() {
         }
     }
 
+
+    fun initDatabase(context: Context){
+        val db = Room.databaseBuilder(
+            context,
+            AppDatabase::class.java, "databaseTY"
+        ).build()
+
+    }
     /**fun generateVertexResponseText(image: Bitmap){
         viewModelScope.launch{
             val response = generativeModel.generateContent(
