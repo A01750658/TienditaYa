@@ -28,6 +28,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.paint
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
@@ -38,7 +39,11 @@ import mx.sct.tienditaya.viewmodel.YTVM
 
 @Composable
 fun AnadirProducto(viewModel: YTVM, navigationController: NavHostController, modifier: Modifier = Modifier) {
-    val estadoLista by viewModel.estadoListaProducto.collectAsState()
+    //val estadoLista by viewModel.estadoListaProducto.collectAsState()
+    //println(estadoLista)
+    val strig = viewModel.getHashPasswordSync(LocalContext.current)
+    var cais = strig?.split("\n")
+    var estadoLista = cais.toString().split(" ")
     Box(contentAlignment = Alignment.Center,modifier = Modifier
         .fillMaxSize()
         //.paint(
@@ -98,7 +103,7 @@ fun AnadirProducto(viewModel: YTVM, navigationController: NavHostController, mod
                                 .padding(horizontal = 16.dp)
                         ) {
                             Text(
-                                text = estadoLista[i].producto,
+                                text = estadoLista[i][0].toString(),
                                 modifier = Modifier
                                     .fillMaxWidth()
                                     .weight(4f),
@@ -108,7 +113,7 @@ fun AnadirProducto(viewModel: YTVM, navigationController: NavHostController, mod
                             )
                             VerticalDivider(color = Color.White, modifier = Modifier.height(40.dp))
                             Text(
-                                text = estadoLista[i].precio,
+                                text = estadoLista[i][1].toString(),
                                 modifier = Modifier
                                     .fillMaxWidth()
                                     .weight(3f),

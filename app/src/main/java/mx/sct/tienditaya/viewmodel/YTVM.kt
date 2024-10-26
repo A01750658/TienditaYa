@@ -4,6 +4,7 @@ import android.content.Context
 import android.graphics.Bitmap
 import android.net.Uri
 import androidx.compose.runtime.mutableStateOf
+import androidx.datastore.preferences.core.edit
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import androidx.room.Room
@@ -14,7 +15,11 @@ import com.google.firebase.vertexai.type.content
 import com.google.firebase.vertexai.vertexAI
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.runBlocking
+import mx.sct.tienditaya.PreferencesKeys
+import mx.sct.tienditaya.dataStore
 import mx.sct.tienditaya.model.AppDatabase
 import mx.sct.tienditaya.model.Fiados
 import mx.sct.tienditaya.model.Inventario
@@ -32,22 +37,40 @@ class YTVM: ViewModel() {
     private val _estadoInt: MutableStateFlow<Int> = MutableStateFlow(0)
     val estadoInt : StateFlow<Int> = _estadoInt
 
-    private val _estadoListaProducto = MutableStateFlow<List<Ventas>>(emptyList())
-    val estadoListaProducto: StateFlow<List<Ventas>> = _estadoListaProducto
-
-    fun appendListaProducto(lista: List<Ventas>) {
-        val currentList = _estadoListaProducto.value.toMutableList()
-        currentList.addAll(lista)
-        _estadoListaProducto.value = currentList
-    }
+    private val _estadoListaProducto = MutableStateFlow<String>("")
+    val estadoListaProducto: StateFlow<String> = _estadoListaProducto
 
 
-    fun setListaProducto(lista: MutableList<Ventas>){
-        _estadoListaProducto.value = lista
+
+    fun setListaProducto(aydua: String){
+        _estadoListaProducto.value = aydua
         println("${_estadoListaProducto.value}")
     }
 
 
+    suspend fun saveHashPasswordSync(context: Context) {
+        context.dataStore.edit { preferences ->
+            preferences[PreferencesKeys.username_saved] = _estadoListaProducto.value
+        }
+    }
+
+    fun saveHashPassword(context: Context) {
+        runBlocking {
+            saveHashPasswordSync(context)
+            println("Hash guardado")
+        }
+    }
+
+    suspend fun getHashPassword(context: Context): String? {
+        val preferences = context.dataStore.data.first()
+        return preferences[PreferencesKeys.username_saved]
+    }
+
+    fun getHashPasswordSync(context: Context): String? {
+        return runBlocking {
+            getHashPassword(context)
+        }
+    }
 
     fun clearListaProducto(){
         println("adasfjsallllllpooooooo${_estadoListaProducto.value}")

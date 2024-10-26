@@ -19,13 +19,25 @@ import mx.sct.tienditaya.ui.theme.TienditaYaTheme
 import mx.sct.tienditaya.view.Main
 import android.content.Context
 import androidx.activity.viewModels
+import androidx.datastore.core.DataStore
 import com.google.firebase.Firebase
 import com.google.firebase.FirebaseApp
 import com.google.firebase.vertexai.vertexAI
 import mx.sct.tienditaya.viewmodel.YTVM
 import java.io.File
+import androidx.datastore.preferences.core.Preferences
+import androidx.datastore.preferences.core.intPreferencesKey
+import androidx.datastore.preferences.core.stringPreferencesKey
+import androidx.datastore.preferences.preferencesDataStore
+
+
+val Context.dataStore: DataStore<androidx.datastore.preferences.core.Preferences> by preferencesDataStore(name = "settings")
+object PreferencesKeys {
+    val username_saved = stringPreferencesKey("List")
+}
 
 class MainActivity : ComponentActivity() {
+
 
     private val viewModel: YTVM by viewModels()
     private lateinit var db: AppDatabase
@@ -48,24 +60,6 @@ class MainActivity : ComponentActivity() {
         }
     }
 
-
-    fun checkDatabaseExists(context: Context): Boolean {
-        return try {
-            val db = Room.databaseBuilder(
-                context.applicationContext,
-                AppDatabase::class.java, "my-database"
-            ).allowMainThreadQueries() // Allow query on main thread for this check
-                .build()
-            db.query(
-                "SELECT 1 FROM sqlite_master WHERE type = 'table' AND name = 'room_master_table'",
-                null
-            ).moveToFirst()
-            db.close()
-            true
-        } catch (e: Exception) {
-            false
-        }
-    }
 
     private fun hasRequiredPermissions(): Boolean {
         return CAMERAX_PERMISSION.all {

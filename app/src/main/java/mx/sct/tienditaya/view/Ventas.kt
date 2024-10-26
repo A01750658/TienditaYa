@@ -44,8 +44,21 @@ import mx.sct.tienditaya.viewmodel.YTVM
 
 @Composable
 fun Ventas(viewModel: YTVM,navController: NavHostController, modifier: Modifier = Modifier) {
-    val estadoLista by viewModel.estadoListaProducto.collectAsState()
+    //val estadoLista by viewModel.estadoListaProducto.collectAsState()
+    //println(estadoLista)
+    val strig = viewModel.getHashPasswordSync(LocalContext.current)
+    var cais = strig?.split("\n")
+
+    var estadoLista = mutableListOf<List<String>>()
+    if (cais != null) {
+        for (i in cais){
+            estadoLista.add(i.split(" "))
+        }
+    }
+    println("hashshdashdash")
     println(estadoLista)
+
+
     Box(
         contentAlignment = Alignment.Center,
         modifier = Modifier
@@ -135,7 +148,7 @@ fun Ventas(viewModel: YTVM,navController: NavHostController, modifier: Modifier 
                 items(estadoLista.size) { index ->
                     Row {
                         Text(
-                            text = estadoLista[index].producto,
+                            text = estadoLista[index][0].toString(),
                             style = MaterialTheme.typography.bodyLarge,
                             color = Color.White,
                             fontSize = 20.sp,
@@ -146,7 +159,7 @@ fun Ventas(viewModel: YTVM,navController: NavHostController, modifier: Modifier 
                         )
                         VerticalDivider(color = Color.White, modifier = Modifier.height(40.dp))
                         Text(
-                            text = estadoLista[index].cantidad,
+                            text = estadoLista[index][1].toString(),
                             style = MaterialTheme.typography.bodyLarge,
                             color = Color.White,
                             fontSize = 20.sp,
@@ -157,7 +170,7 @@ fun Ventas(viewModel: YTVM,navController: NavHostController, modifier: Modifier 
                         )
                         VerticalDivider(color = Color.White, modifier = Modifier.height(40.dp))
                         Text(
-                            text = "$${estadoLista[index].precio}",
+                            text = "$${estadoLista[index][2]}",
                             style = MaterialTheme.typography.bodyLarge,
                             color = Color.White,
                             fontSize = 20.sp,

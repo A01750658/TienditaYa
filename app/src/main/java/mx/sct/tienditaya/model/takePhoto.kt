@@ -20,7 +20,7 @@ public fun takePhoto(controller: LifecycleCameraController, context: Context,
                 val bitmap = image.toBitmap()
                 if (bitmap != null) {
                     val bwBitmap = toBlackAndWhiteDithering(bitmap, dithering = true)
-                    recognizeTextFromBitmap(bwBitmap, idForo, navController)
+                    recognizeTextFromBitmap(bwBitmap, idForo, navController, context)
                 } else {
                     println("Failed to convert ImageProxy to Bitmap")
                 }

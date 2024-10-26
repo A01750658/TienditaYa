@@ -56,7 +56,12 @@ android {
 
 dependencies {
 
+    implementation ("androidx.datastore:datastore-preferences:1.0.0")
+    implementation ("androidx.datastore:datastore-core:1.0.0")
+
+
     implementation(libs.androidx.room.runtime)
+    implementation(libs.androidx.datastore.core.android)
     annotationProcessor(libs.androidx.room.compiler)
     implementation("androidx.room:room-ktx:2.6.0")
     //ksp("androidx.room:room-compiler:2.6.0")
