@@ -9,13 +9,9 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Create
-import androidx.compose.material3.ElevatedButton
+import androidx.compose.material3.FloatingActionButton
 import androidx.compose.material3.HorizontalDivider
-import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.material3.VerticalDivider
@@ -26,22 +22,22 @@ import androidx.compose.ui.draw.paint
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavHostController
 import mx.sct.tienditaya.R
 
 
 @Composable
-fun Fiados(modifier: Modifier = Modifier) {
+fun Fiados(navigationController: NavHostController, modifier: Modifier = Modifier) {
     Box(contentAlignment = Alignment.Center,modifier = Modifier
         .fillMaxSize()
         .paint(
-            painterResource(id = R.drawable.background),
+            painterResource(id = R.drawable.tienda_2),
             contentScale = ContentScale.FillBounds
         )) {
-        Column{
+        Box{
             Column(
                 modifier = modifier
                     .padding(20.dp)
@@ -61,7 +57,7 @@ fun Fiados(modifier: Modifier = Modifier) {
                             .weight(4f),
                         color = Color.White,
                         textAlign = TextAlign.Left,
-                        fontSize = 20.sp
+                        fontSize = 24.sp
                     )
                     VerticalDivider(color = Color.White, modifier = Modifier.height(30.dp))
                     Text(
@@ -71,14 +67,14 @@ fun Fiados(modifier: Modifier = Modifier) {
                             .weight(2f),
                         color = Color.White,
                         textAlign = TextAlign.Center,
-                        fontSize = 20.sp
+                        fontSize = 24.sp
                     )
 
 
                 }
                 HorizontalDivider(color = Color.White)
                 LazyColumn(modifier = Modifier.padding(start = 10.dp)) {
-                    items(12) { i ->
+                    items(30) { i ->
                         Row(
                             modifier = Modifier
                                 .fillMaxWidth()
@@ -107,11 +103,14 @@ fun Fiados(modifier: Modifier = Modifier) {
                         }
                         HorizontalDivider(color = Color.White)
                     }
+                    item {
+                        Spacer(modifier = Modifier.height(40.dp))
+                    }
                 }
                 Spacer(modifier = Modifier.height(16.dp))
             }
-            ElevatedButton( onClick = {  }, modifier = Modifier.fillMaxWidth().padding(horizontal = 100.dp)) {
-                Text(text = "Añadir o Editar")
+            FloatingActionButton( onClick = { navigationController.navigate(Pantallas.RUTA_CHECAR_FIADOS) }, modifier = Modifier.align(Alignment.BottomCenter)) {
+                Text(text = "Añadir o Editar", modifier = Modifier.padding(10.dp), color = Color.White)
             }
         }
     }

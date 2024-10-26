@@ -8,10 +8,15 @@ sealed class Pantallas (
     val icono: ImageVector
 ){
     companion object {
+        const val RUTA_EDITAR_PRODUCTO_VENTA= "ruta_editar_producto_venta"
+        const val RUTA_EDITAR_FIADO = "ruta_editar_fiado"
+        const val RUTA_EDITAR_PRODUCTO = "ruta_editar_producto"
         const val RUTA_APP_HOME = "ruta_app_home"
         const val RUTA_ANADIR_PRODUCTO = "ruta_anadir_producto"
         const val RUTA_VENTAS = "ruta_ventas"
         const val RUTA_INVENTARIO = "ruta_inventario"
         const val RUTA_FIADOS = "ruta_fiados"
+        const val RUTA_CHECAR_FIADOS = "ruta_checar_fiados"
+        const val RUTA_CHAT_BOT = "ruta_chat_bot"
     }
 }

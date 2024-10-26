@@ -1,6 +1,5 @@
 package mx.sct.tienditaya.view
 
-import android.graphics.drawable.Icon
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -12,20 +11,18 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Create
 import androidx.compose.material3.ElevatedButton
+import androidx.compose.material3.FloatingActionButton
 import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.SegmentedButtonDefaults.Icon
 import androidx.compose.material3.Text
 import androidx.compose.material3.VerticalDivider
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.clip
 import androidx.compose.ui.draw.paint
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
@@ -40,11 +37,11 @@ import mx.sct.tienditaya.R
 fun AnadirProducto(navigationController: NavHostController, modifier: Modifier = Modifier) {
     Box(contentAlignment = Alignment.Center,modifier = Modifier
         .fillMaxSize()
-        .paint(
-            painterResource(id = R.drawable.background),
-            contentScale = ContentScale.FillBounds
-        )) {
-        Column{
+        //.paint(
+        //    painterResource(id = R.drawable.tienda_2),
+        //    contentScale = ContentScale.FillBounds)
+    ) {
+        Box{
         Column(
             modifier = modifier
                 .padding(20.dp)
@@ -100,7 +97,7 @@ fun AnadirProducto(navigationController: NavHostController, modifier: Modifier =
             }
             HorizontalDivider(color = Color.White)
             LazyColumn(modifier = Modifier.padding(start = 10.dp)) {
-                items(12) { i ->
+                items(35) { i ->
                         Row(
                             modifier = Modifier
                                 .fillMaxWidth()
@@ -137,7 +134,7 @@ fun AnadirProducto(navigationController: NavHostController, modifier: Modifier =
                             )
                             VerticalDivider(color = Color.White, modifier = Modifier.height(40.dp))
                             ElevatedButton(
-                                onClick = { /*TODO*/ },
+                                onClick = { navigationController.navigate(Pantallas.RUTA_EDITAR_PRODUCTO) },
                                 modifier = Modifier.height(30.dp)
                                     .width(60.dp)
 
@@ -150,11 +147,14 @@ fun AnadirProducto(navigationController: NavHostController, modifier: Modifier =
                         }
                         HorizontalDivider(color = Color.White)
                     }
+                item {
+                    Spacer(modifier = Modifier.height(40.dp))
+                }
                 }
             Spacer(modifier = Modifier.height(16.dp))
         }
-            ElevatedButton( onClick = { navigationController.navigate(Pantallas.RUTA_APP_HOME) }, modifier = Modifier.fillMaxWidth().padding(horizontal = 100.dp)) {
-                Text(text = "Guardar")
+            FloatingActionButton( onClick = { navigationController.navigate(Pantallas.RUTA_APP_HOME) }, modifier = Modifier.align(Alignment.BottomCenter)) {
+                Text(text = "Guardar", modifier = Modifier.padding(10.dp), color = Color.White)
             }
         }
     }
