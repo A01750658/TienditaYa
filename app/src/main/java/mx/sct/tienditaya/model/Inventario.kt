@@ -6,7 +6,8 @@ import androidx.room.PrimaryKey
 
 @Entity
 data class Inventario(
-    @PrimaryKey val id: Int,
-    @ColumnInfo(name = "nombre_producto") val nombreProducto: String,
-    @ColumnInfo(name = "cantidad_producto") val cantidadProducto: String
+    @PrimaryKey (autoGenerate = true)
+    val id: Int = 0,
+    val nombre_producto: String,
+    val cantidad_producto: Int
 )
