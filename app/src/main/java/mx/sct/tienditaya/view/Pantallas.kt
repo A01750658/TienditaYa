@@ -17,5 +17,6 @@ sealed class Pantallas (
         const val RUTA_INVENTARIO = "ruta_inventario"
         const val RUTA_FIADOS = "ruta_fiados"
         const val RUTA_CHECAR_FIADOS = "ruta_checar_fiados"
+        const val RUTA_CHAT_BOT = "ruta_chat_bot"
     }
 }

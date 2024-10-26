@@ -267,6 +267,31 @@ fun AppTopBar(navController: NavHostController) {
                 }
             }
         )
+    }else if (navController.currentBackStackEntryAsState().value?.destination?.route == Pantallas.RUTA_CHAT_BOT) {
+        TopAppBar(
+            title = {
+                Text(
+                    text = "Aprende a usar nuestra aplicación",
+                    textAlign = TextAlign.Center,
+                    style = MaterialTheme.typography.titleLarge.copy(fontSize = 20.sp),
+                    modifier = Modifier.fillMaxWidth(),
+                    color = MaterialTheme.colorScheme.onTertiary,
+                    fontWeight = FontWeight.Bold
+                )
+            },
+            colors = TopAppBarDefaults.topAppBarColors(
+                containerColor = MaterialTheme.colorScheme.primary
+            ),
+            navigationIcon = {
+                IconButton(onClick = { navController.navigateUp() }) {
+                    Icon(
+                        imageVector = Icons.Default.ArrowBack,
+                        contentDescription = "Back",
+                        tint = MaterialTheme.colorScheme.onTertiary
+                    )
+                }
+            }
+        )
     }
 }
 
@@ -313,6 +338,9 @@ fun AppNavHost(navController: NavHostController, modifier: Modifier = Modifier) 
                 }
             composable(Pantallas.RUTA_EDITAR_PRODUCTO_VENTA) {
                 EditarProductoVenta(navController)
+            }
+            composable(Pantallas.RUTA_CHAT_BOT) {
+                ChatBot()
             }
         }
     }
