@@ -45,7 +45,9 @@ fun Home(navController: NavHostController, modifier: Modifier = Modifier){
                 )
 
             }
-
+            Row{
+                ChatBot()
+            }
 
         }
     }
