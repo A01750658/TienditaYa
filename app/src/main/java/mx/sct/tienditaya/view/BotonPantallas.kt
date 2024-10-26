@@ -45,22 +45,23 @@ fun BotonPantallas(onClick: () -> Unit, imagen: Int, nombre: String, modifier: M
             shape = RoundedCornerShape(25),
             modifier = modifier
                 .height(270.dp)
-                .width(if (screenWidth < 370) 180.dp else (screenWidth / 2.30).dp)
+                .width(150.dp)
                 .padding(horizontal = 3.dp)
         ) {
-            Column(modifier = Modifier.fillMaxWidth()) {
+            Column() {
                 Image(
-                painter = painterResource(id = imagen),
-                contentDescription = "Elemento",
-                modifier = modifier
-                    .height(160.dp)
-                    .fillMaxWidth()
-            )
+                    painter = painterResource(id = imagen),
+                    contentDescription = "Elemento",
+                   modifier = Modifier
+                        .height(160.dp)
+                        .fillMaxWidth()
+                )
                 Text(
                     text = nombre,
                     textAlign = TextAlign.Center,
-                    modifier = modifier
-                        .padding(top = 5.dp).fillMaxWidth(),
+                    modifier = Modifier
+                        .padding(top = 5.dp)
+                        .fillMaxWidth(),
                     color = MaterialTheme.colorScheme.primary,
                     style = MaterialTheme.typography.bodyLarge.copy(fontSize = 20.sp)
                 )
@@ -68,3 +69,4 @@ fun BotonPantallas(onClick: () -> Unit, imagen: Int, nombre: String, modifier: M
         }
     }
 }
+
