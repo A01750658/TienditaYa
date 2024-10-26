@@ -33,14 +33,15 @@ import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
 import mx.sct.tienditaya.R
 import mx.sct.tienditaya.ui.theme.TienditaYaTheme
+import mx.sct.tienditaya.viewmodel.YTVM
 
 @Composable
-fun Main(modifier: Modifier = Modifier){
+fun Main( viewModel: YTVM, modifier: Modifier = Modifier,){
     val navController = rememberNavController()
     TienditaYaTheme {
         Scaffold(topBar = {AppTopBar(navController)}){
                 innerPadding ->
-            AppNavHost(navController,modifier.padding(innerPadding))
+            AppNavHost(viewModel,navController,modifier.padding(innerPadding))
         }
     }
 }
@@ -296,7 +297,7 @@ fun AppTopBar(navController: NavHostController) {
 
 
 @Composable
-fun AppNavHost(navController: NavHostController, modifier: Modifier = Modifier) {
+fun AppNavHost(viewModel: YTVM, navController: NavHostController, modifier: Modifier = Modifier) {
     Box(contentAlignment = Alignment.Center,modifier = Modifier
         .fillMaxSize()
         .paint(
@@ -321,7 +322,7 @@ fun AppNavHost(navController: NavHostController, modifier: Modifier = Modifier) 
                 Ventas(navController)
             }
             composable(Pantallas.RUTA_INVENTARIO) {
-                Inventario()
+                Inventario(viewModel)
             }
             composable(Pantallas.RUTA_FIADOS) {
                 Fiados(navController)

@@ -3,6 +3,7 @@ plugins {
     alias(libs.plugins.jetbrains.kotlin.android)
     id("org.jetbrains.kotlin.kapt") version "1.8.22"
     id("com.google.devtools.ksp") version "1.9.21-1.0.15"
+
 }
 
 android {
@@ -52,6 +53,7 @@ android {
     ksp {
         arg("room.schemaLocation", "$projectDir/schemas")
     }
+
 }
 
 dependencies {
