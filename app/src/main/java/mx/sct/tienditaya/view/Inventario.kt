@@ -20,6 +20,7 @@ import androidx.compose.ui.draw.paint
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -33,62 +34,71 @@ fun Inventario(modifier: Modifier = Modifier){
             painterResource(id = R.drawable.background),
             contentScale = ContentScale.FillBounds
         )) {
-        Column(modifier = modifier
-            .padding(20.dp)
-            .fillMaxSize()
-            .background(color = MaterialTheme.colorScheme.tertiary.copy(alpha = 0.9f))) {
-            Row (modifier = Modifier
-                .fillMaxWidth()
-                .padding(horizontal = 16.dp)
-                .padding(top = 16.dp)) {
-                Text(
-                    text = "   Producto",
+        Column {
+            InputSearch(text = "", onValueChange = {}, keyBoardType = KeyboardType.Text)
+            Column(
+                modifier = modifier
+                    .padding(horizontal = 20.dp)
+                    .fillMaxSize()
+                    .background(color = MaterialTheme.colorScheme.tertiary.copy(alpha = 0.9f))
+            ) {
+                Row(
                     modifier = Modifier
                         .fillMaxWidth()
-                        .weight(3f),
-                    color = Color.White,
-                    textAlign = TextAlign.Left,
-                    fontSize = 24.sp
-                )
-                Text(
-                    text = "Cantidad",
+                        .padding(horizontal = 16.dp)
+                        .padding(top = 16.dp)
+                ) {
+                    Text(
+                        text = "   Producto",
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .weight(3f),
+                        color = Color.White,
+                        textAlign = TextAlign.Left,
+                        fontSize = 24.sp
+                    )
+                    Text(
+                        text = "Cantidad",
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .weight(2f),
+                        color = Color.White,
+                        textAlign = TextAlign.Center,
+                        fontSize = 24.sp
+                    )
+                }
+                Spacer(modifier = Modifier.height(10.dp))
+                HorizontalDivider(color = Color.White)
+                LazyColumn(
                     modifier = Modifier
-                        .fillMaxWidth()
-                        .weight(2f),
-                    color = Color.White,
-                    textAlign = TextAlign.Center,
-                    fontSize = 24.sp
-                )
-            }
-            Spacer(modifier = Modifier.height(10.dp))
-            HorizontalDivider(color = Color.White)
-            LazyColumn(modifier = Modifier
-                .fillMaxSize()
-                .padding(10.dp)) {
-                items(12) { i ->
-                    Spacer(modifier = Modifier.height(16.dp))
-                    Row (){
-                        Text(
-                            text = "Producto $i",
-                            modifier = Modifier
-                                .fillMaxWidth()
-                                .weight(3f),
-                            color = Color.White,
-                            textAlign = TextAlign.Left,
-                            fontSize = 20.sp
-                        )
-                        Text(
-                            text = "$i",
-                            modifier = Modifier
-                                .fillMaxWidth()
-                                .weight(2f),
-                            color = Color.White,
-                            textAlign = TextAlign.Center,
-                            fontSize = 20.sp
-                        )
+                        .fillMaxSize()
+                        .padding(10.dp)
+                ) {
+                    items(12) { i ->
+                        Spacer(modifier = Modifier.height(16.dp))
+                        Row() {
+                            Text(
+                                text = "Producto $i",
+                                modifier = Modifier
+                                    .fillMaxWidth()
+                                    .weight(3f),
+                                color = Color.White,
+                                textAlign = TextAlign.Left,
+                                fontSize = 20.sp
+                            )
+                            Text(
+                                text = "$i",
+                                modifier = Modifier
+                                    .fillMaxWidth()
+                                    .weight(2f),
+                                color = Color.White,
+                                textAlign = TextAlign.Center,
+                                fontSize = 20.sp
+                            )
+                        }
+                        Spacer(modifier = Modifier.height(16.dp))
+                        HorizontalDivider(color = Color.White)
                     }
-                    Spacer(modifier = Modifier.height(16.dp))
-                    HorizontalDivider(color = Color.White)
                 }
             }
         }
