@@ -45,7 +45,7 @@ fun BotonPantallas(onClick: () -> Unit, imagen: Int, nombre: String, modifier: M
             shape = RoundedCornerShape(25),
             modifier = modifier
                 .height(270.dp)
-                .width(150.dp)
+                .width(if (screenWidth < 370) 150.dp else (screenWidth / 2.30).dp)
                 .padding(horizontal = 3.dp)
         ) {
             Column() {
