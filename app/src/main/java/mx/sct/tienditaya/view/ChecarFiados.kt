@@ -10,7 +10,6 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.material3.ElevatedButton
 import androidx.compose.material3.FloatingActionButton
 import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.MaterialTheme
@@ -35,7 +34,7 @@ fun ChecarFiados(navController: NavHostController, modifier: Modifier = Modifier
     Box(contentAlignment = Alignment.Center,modifier = Modifier
         .fillMaxSize()
         .paint(
-            painterResource(id = R.drawable.background),
+            painterResource(id = R.drawable.tienda_2),
             contentScale = ContentScale.FillBounds
         )) {
         Box{

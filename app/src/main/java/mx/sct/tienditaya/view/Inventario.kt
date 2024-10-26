@@ -31,7 +31,7 @@ fun Inventario(modifier: Modifier = Modifier){
     Box(contentAlignment = Alignment.Center,modifier = Modifier
         .fillMaxSize()
         .paint(
-            painterResource(id = R.drawable.background),
+            painterResource(id = R.drawable.tienda_2),
             contentScale = ContentScale.FillBounds
         )) {
         Column {
