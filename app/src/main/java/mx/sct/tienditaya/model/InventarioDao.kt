@@ -15,6 +15,6 @@ interface InventarioDao {
     fun insertAll(vararg inventarios: Inventario)
 
     @Update
-    suspend fun update(inventario: Inventario)
+    suspend fun update()
 
 }
