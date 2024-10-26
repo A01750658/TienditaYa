@@ -16,8 +16,9 @@ import mx.sct.tienditaya.R
 
 @Composable
 fun Home(navController: NavHostController, modifier: Modifier = Modifier){
-    Box(modifier= Modifier.fillMaxSize().paint(painterResource(id= R.drawable.tienda_2),
-        contentScale = ContentScale.FillBounds)){
+    Box(modifier= Modifier.fillMaxSize()//.paint(painterResource(id= R.drawable.tienda_2),
+        //contentScale = ContentScale.FillBounds)
+    ){
         Column(modifier = modifier.padding(horizontal = 20.dp)) {
             Row() {
                 BotonPantallas(
@@ -44,7 +45,9 @@ fun Home(navController: NavHostController, modifier: Modifier = Modifier){
                 )
 
             }
-
+            Row{
+                ChatBot()
+            }
 
         }
     }

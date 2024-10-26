@@ -37,10 +37,10 @@ import mx.sct.tienditaya.R
 fun AnadirProducto(navigationController: NavHostController, modifier: Modifier = Modifier) {
     Box(contentAlignment = Alignment.Center,modifier = Modifier
         .fillMaxSize()
-        .paint(
-            painterResource(id = R.drawable.tienda_2),
-            contentScale = ContentScale.FillBounds
-        )) {
+        //.paint(
+        //    painterResource(id = R.drawable.tienda_2),
+        //    contentScale = ContentScale.FillBounds)
+    ) {
         Box{
         Column(
             modifier = modifier

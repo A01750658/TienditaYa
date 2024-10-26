@@ -9,9 +9,14 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Create
+import androidx.compose.material3.ElevatedButton
 import androidx.compose.material3.FloatingActionButton
 import androidx.compose.material3.HorizontalDivider
+import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.material3.VerticalDivider
@@ -33,10 +38,11 @@ import mx.sct.tienditaya.R
 fun ChecarFiados(navController: NavHostController, modifier: Modifier = Modifier) {
     Box(contentAlignment = Alignment.Center,modifier = Modifier
         .fillMaxSize()
-        .paint(
+        /*.paint(
             painterResource(id = R.drawable.tienda_2),
             contentScale = ContentScale.FillBounds
-        )) {
+        )*/
+    ) {
         Box{
             Column(
                 modifier = modifier
@@ -62,6 +68,16 @@ fun ChecarFiados(navController: NavHostController, modifier: Modifier = Modifier
                     VerticalDivider(color = Color.White, modifier = Modifier.height(30.dp))
                     Text(
                         text = "Deuda",
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .weight(2f),
+                        color = Color.White,
+                        textAlign = TextAlign.Center,
+                        fontSize = 24.sp
+                    )
+                    VerticalDivider(color = Color.White, modifier = Modifier.height(30.dp))
+                    Text(
+                        text = "Editar",
                         modifier = Modifier
                             .fillMaxWidth()
                             .weight(2f),
@@ -97,7 +113,18 @@ fun ChecarFiados(navController: NavHostController, modifier: Modifier = Modifier
                                 textAlign = TextAlign.Center,
                                 fontSize = 20.sp
                             )
+                            VerticalDivider(color = Color.White, modifier = Modifier.height(40.dp))
+                            ElevatedButton(
+                                onClick = { navController.navigate(Pantallas.RUTA_EDITAR_FIADO) },
+                                modifier = Modifier.height(35.dp)
+                                    .width(60.dp).weight(2f),
 
+                            ) {
+                                Icon(
+                                    imageVector = Icons.Filled.Create,
+                                    contentDescription = "Editar"
+                                )
+                            }
                         }
                         HorizontalDivider(color = Color.White)
                     }
