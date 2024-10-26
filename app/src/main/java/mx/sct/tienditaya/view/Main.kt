@@ -50,7 +50,7 @@ fun AppTopBar(navController: NavHostController) {
                 Text(
                     text = "TienditaYa",
                     textAlign = TextAlign.Center,
-                    style = MaterialTheme.typography.headlineSmall,
+                    style = MaterialTheme.typography.titleLarge.copy(fontSize = 40.sp),
                     modifier = Modifier.fillMaxWidth(),
                     color = MaterialTheme.colorScheme.onTertiary,
                     fontWeight = FontWeight.Bold
@@ -66,7 +66,7 @@ fun AppTopBar(navController: NavHostController) {
                 Text(
                     text = "Generar venta",
                     textAlign = TextAlign.Center,
-                    style = MaterialTheme.typography.headlineSmall,
+                    style = MaterialTheme.typography.titleLarge.copy(fontSize = 40.sp),
                     modifier = Modifier.fillMaxWidth(),
                     color = MaterialTheme.colorScheme.onTertiary,
                     fontWeight = FontWeight.Bold
@@ -91,7 +91,7 @@ fun AppTopBar(navController: NavHostController) {
                 Text(
                     text = "Añadir a Inventario",
                     textAlign = TextAlign.Center,
-                    style = MaterialTheme.typography.headlineSmall,
+                    style = MaterialTheme.typography.titleLarge.copy(fontSize = 40.sp),
                     modifier = Modifier.fillMaxWidth(),
                     color = MaterialTheme.colorScheme.onTertiary,
                     fontWeight = FontWeight.Bold
@@ -116,7 +116,7 @@ fun AppTopBar(navController: NavHostController) {
                 Text(
                     text = "Inventario",
                     textAlign = TextAlign.Center,
-                    style = MaterialTheme.typography.headlineSmall,
+                    style = MaterialTheme.typography.titleLarge.copy(fontSize = 40.sp),
                     modifier = Modifier.fillMaxWidth(),
                     color = MaterialTheme.colorScheme.onTertiary,
                     fontWeight = FontWeight.Bold

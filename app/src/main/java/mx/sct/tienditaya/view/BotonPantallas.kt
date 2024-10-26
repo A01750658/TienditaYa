@@ -62,7 +62,7 @@ fun BotonPantallas(onClick: () -> Unit, imagen: Int, nombre: String, modifier: M
                     modifier = modifier
                         .padding(top = 5.dp).fillMaxWidth(),
                     color = MaterialTheme.colorScheme.primary,
-                    style = MaterialTheme.typography.bodyMedium.copy(fontSize = 20.sp)
+                    style = MaterialTheme.typography.bodyLarge.copy(fontSize = 20.sp)
                 )
             }
         }
