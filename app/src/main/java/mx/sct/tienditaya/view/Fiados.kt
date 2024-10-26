@@ -16,6 +16,8 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.material3.VerticalDivider
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.paint
@@ -25,12 +27,15 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.lifecycle.ViewModel
 import androidx.navigation.NavHostController
 import mx.sct.tienditaya.R
+import mx.sct.tienditaya.viewmodel.YTVM
 
 
 @Composable
-fun Fiados(navigationController: NavHostController, modifier: Modifier = Modifier) {
+fun Fiados(viewModel: YTVM, navigationController: NavHostController, modifier: Modifier = Modifier) {
+    val estadoFiados by viewModel.estadoFiados.collectAsState()
     Box(contentAlignment = Alignment.Center,modifier = Modifier
         .fillMaxSize()
         .paint(
@@ -74,14 +79,14 @@ fun Fiados(navigationController: NavHostController, modifier: Modifier = Modifie
                 }
                 HorizontalDivider(color = Color.White)
                 LazyColumn(modifier = Modifier.padding(start = 10.dp)) {
-                    items(30) { i ->
+                    items(estadoFiados.response.size) { i ->
                         Row(
                             modifier = Modifier
                                 .fillMaxWidth()
                                 .padding(horizontal = 16.dp)
                         ) {
                             Text(
-                                text = "Nombre $i",
+                                text = estadoFiados.response[i][1],
                                 modifier = Modifier
                                     .fillMaxWidth()
                                     .weight(4f),
@@ -91,7 +96,7 @@ fun Fiados(navigationController: NavHostController, modifier: Modifier = Modifie
                             )
                             VerticalDivider(color = Color.White, modifier = Modifier.height(40.dp))
                             Text(
-                                text = "$$i",
+                                text = "$${estadoFiados.response[i][2]}",
                                 modifier = Modifier
                                     .fillMaxWidth()
                                     .weight(2f),

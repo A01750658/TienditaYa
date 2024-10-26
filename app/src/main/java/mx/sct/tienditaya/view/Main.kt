@@ -348,7 +348,7 @@ fun AppNavHost(viewModel: YTVM, navController: NavHostController, modifier: Modi
                 Inventario(viewModel)
             }
             composable(Pantallas.RUTA_FIADOS) {
-                Fiados(navController)
+                Fiados(viewModel,navController)
             }
             composable(Pantallas.RUTA_CHECAR_FIADOS) {
                 ChecarFiados(navController)

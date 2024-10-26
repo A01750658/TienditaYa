@@ -46,12 +46,7 @@ fun Home(navController: NavHostController, modifier: Modifier = Modifier, viewMo
                         nombre = "Ventas"
                     )
                     BotonPantallas(
-                        onClick = { viewModel.putFiado(
-                            mx.sct.tienditaya.model.Fiados(
-                                nombre = "Juan",
-                                deuda = 120f
-                            )
-                        )
+                        onClick = { viewModel.getInventario()
                             navController.navigate(Pantallas.RUTA_INVENTARIO) },
                         imagen = R.drawable.inventario,
                         nombre = "Inventario"
