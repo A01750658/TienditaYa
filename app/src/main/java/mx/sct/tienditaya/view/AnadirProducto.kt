@@ -157,7 +157,8 @@ fun AnadirProducto(viewModel: YTVM, navigationController: NavHostController, mod
                 }
             Spacer(modifier = Modifier.height(16.dp))
         }
-            FloatingActionButton( onClick = { navigationController.navigate(Pantallas.RUTA_APP_HOME) }, modifier = Modifier.align(Alignment.BottomCenter)) {
+            FloatingActionButton( onClick = { viewModel.clearListaProducto()
+                navigationController.navigate(Pantallas.RUTA_APP_HOME) }, modifier = Modifier.align(Alignment.BottomCenter)) {
                 Text(text = "Guardar", modifier = Modifier.padding(10.dp), color = Color.White)
             }
         }
