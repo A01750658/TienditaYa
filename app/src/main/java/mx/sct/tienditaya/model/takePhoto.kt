@@ -23,7 +23,7 @@ public fun takePhoto(controller: LifecycleCameraController, context: Context,
                     println("Failed to convert ImageProxy to Bitmap")
                 }
                 image.close() // Don't forget to close the ImageProxy
-
+                println("aaaaaaaaaa")
             }
             override fun onError(exception: ImageCaptureException) {
                 super.onError(exception)

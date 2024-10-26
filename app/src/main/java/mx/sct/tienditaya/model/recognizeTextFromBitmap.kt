@@ -15,6 +15,7 @@ fun recognizeTextFromBitmap(bitmap: Bitmap, idForo: String) {
         .addOnSuccessListener { visionText ->
             // Handle successful text recognition here
             val resultText = visionText.text
+            println(resultText)
             val lines = resultText.split("\n")
             // Do something with the recognized text
             val products = mutableListOf<List<String>>()
