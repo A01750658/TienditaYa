@@ -31,7 +31,6 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
-import mx.sct.tienditaya.Greeting
 import mx.sct.tienditaya.R
 import mx.sct.tienditaya.ui.theme.TienditaYaTheme
 
