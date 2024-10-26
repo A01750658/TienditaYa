@@ -1,4 +1,4 @@
-package mx.sct.tienditaya.view
+package mx.sct.tienditaya.model
 
 import android.graphics.Bitmap
 import com.google.mlkit.vision.common.InputImage
