@@ -26,16 +26,22 @@ import androidx.compose.material3.Icon
 import androidx.compose.material3.Text
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalContext
 
 
 @Composable
 fun Home(navController: NavHostController, modifier: Modifier = Modifier){
     val scrollState = rememberScrollState()
-    Box(modifier= Modifier.fillMaxSize().verticalScroll(scrollState)//.paint(painterResource(id= R.drawable.tienda_2),
+    val context = LocalContext.current
+    Box(modifier= Modifier
+        .fillMaxSize()
+        .verticalScroll(scrollState)//.paint(painterResource(id= R.drawable.tienda_2),
         //contentScale = ContentScale.FillBounds)
     ){
         Box(modifier = Modifier.fillMaxSize()) {
-            Column(modifier = modifier.padding(horizontal = 20.dp).fillMaxSize()) {
+            Column(modifier = modifier
+                .padding(horizontal = 20.dp)
+                .fillMaxSize()) {
                 Row() {
                     BotonPantallas(
                         onClick = { navController.navigate(Pantallas.RUTA_VENTAS) },

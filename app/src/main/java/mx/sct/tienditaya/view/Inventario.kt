@@ -26,7 +26,6 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import mx.sct.tienditaya.R
-import mx.sct.tienditaya.model.Test
 
 @Composable
 fun Inventario(modifier: Modifier = Modifier){

@@ -30,6 +30,7 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.draw.paint
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
@@ -162,8 +163,10 @@ fun Ventas(navController: NavHostController, modifier: Modifier = Modifier) {
                         VerticalDivider(color = Color.White, modifier = Modifier.height(40.dp))
                         ElevatedButton(
                             onClick = { navController.navigate(Pantallas.RUTA_EDITAR_PRODUCTO_VENTA) },
-                            modifier = Modifier.height(35.dp)
-                                .width(60.dp).weight(1f),
+                            modifier = Modifier
+                                .height(35.dp)
+                                .width(60.dp)
+                                .weight(1f),
 
                             ) {
                             Icon(
